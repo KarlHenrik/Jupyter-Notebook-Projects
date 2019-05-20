@@ -51,6 +51,7 @@
   - title: How long would it take to fall through the Earth?
     url: /features/FallingThroughTheEarth
     not_numbered: true
+    use_binder_button: true  # If 'true', add a binder button for interactive links
   - title: How long would it take to fall into space?
     url: /features/FallingIntoSpace
     not_numbered: true
