@@ -183,9 +183,9 @@ This accuracy is encouraging. Note that the total mass is not the only useful re
 
 The gravitational force between two objects is given by $F = \frac{GMm}{r^2}$. The Shell Theorem states that at a distance r we only need to consider the mass further in than where we currently are. Additionally, Newton's second law gives us that:
 
-\begin{align*}
+$$\begin{align*}
 F = ma \Rightarrow a = \frac{F}{m} = \frac{GMm}{r^2m} = \frac{GM}{r^2}
-\end{align*}
+\end{align*}$$
 
 
 
@@ -293,10 +293,10 @@ print(coefs1)
 
 ```
 
-\begin{align*}
+$$\begin{align*}
 f_1(r) &= a_0 + a_1r^1 + a_2r^2 + a_3r^3 \\
 f_1(r) &= -2.93*10^{-2} + 3.88*10^{-6}r - 2.40*10^{-13}r^2 + 3.85*10^{-21}r^3
-\end{align*}
+\end{align*}$$
 
 To show this new general function in relation to the values for gravitational acceleration we found from the data, we can plot them together and summarize the errors for every point:
 
