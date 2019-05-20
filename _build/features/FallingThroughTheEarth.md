@@ -61,6 +61,7 @@ For plotting and calculations we import numpy, pyplot and polynomial.
 
 {:.input_area}
 ```python
+%matplotlib inline
 import numpy as np #Used for mathematical functions and constants
 import matplotlib.pyplot as plt #Used for plotting
 import numpy.polynomial.polynomial as poly #Used later for finding a polynomial that approximates the data
@@ -116,7 +117,7 @@ plt.show()
 
 *This image (taken from <a href="https://en.wikipedia.org/wiki/Structure_of_the_Earth">en.wikipedia.org/wiki/Structure_of_the_Earth</a>) shows how the different layers and densities of the earth fit together.*
 
-<img src="Resources/FallingThroughTheEarthResources/RadialDensityPREM.jpg" alt="Drawing" style="width: 70%;" align="left"/>
+<img src="Resources/FallingThroughTheEarthResources/RadialDensityPREM.jpg" alt="Drawing" style="width: 70%;"/>
 
 ### Mass at different heights
 
@@ -527,92 +528,6 @@ plt.show()
 We see that when we reach the center (position=0), acceleration is also 0. This is also when we reach our top velocity.
 
 We saw earlier that gravity is almost constant close to the surface, which can also be seen here. This near constant gravity near the surface is what makes our velocity change so linearly between the sharper turns.
-
-## Animating the fall
-
-To get an even better feel for how these sizes relate, we can animate them side by side using matplotlibs FuncAnimation class. To be able to see this animation you will need to view this notebook either on your machine locally, or interactively in mybinder <a href="https://mybinder.org/v2/gh/KarlHenrik/Computational-Essays/master">here</a> (if you are not viewing it there already).
-
-
-
-{:.input_area}
-```python
-from matplotlib import animation
-from IPython.display import HTML
-```
-
-
-
-
-{:.input_area}
-```python
-fig, (ax1, ax2) = plt.subplots(1, 2)
-fig.set_size_inches(19, 6)
-
-backAndForth = (np.argmax(positions[100:6000]) + 100) #The index when we are back where we started
-endtime = backAndForth
-steps = 100
-dt = endtime/steps
-
-#Making the circles for the Earth, effective Earth and you, and adding them to the first axis
-earth = plt.Circle((0, 0), earthRadius/1000, color='b', alpha = 0.1)
-effectiveEarth = plt.Circle((0, 0), earthRadius/1000, color='r', alpha = 0.3)
-you = plt.Circle((0, 0), 300, color='yellow')
-ax1.add_artist(earth)
-ax1.add_artist(effectiveEarth)
-ax1.add_artist(you)
-
-ax1.set_aspect(1) #Makes the axis quadratic, so that Earth won't be elliptic
-#(x1, x2), (y1, y2) limits of the axis
-ax1.axis([-earthRadius/1000 - 300, earthRadius/1000 + 300, -earthRadius/1000 - 300, earthRadius/1000 + 300])
-ax1.set_xlabel("[km]")
-ax1.set_ylabel("Height above center [km]")
-ax1.set_title("You, falling")
-ax1.title.set_fontsize(18)
-ax1.legend([earth, effectiveEarth, you], ["Earth", "Effective Mass", "You"])
-
-ax2.axis([0, endtime, -1.05, 1.05])
-ax2.set_xlabel("Time [s]")
-ax2.set_title("Normalized graphs for position, velocity and acceleration")
-ax2.title.set_fontsize(18)
-posline, = ax2.plot([], [], lw=2, label="Position")
-velline, = ax2.plot([], [], lw=2, label="Velocity")
-accline, = ax2.plot([], [], lw=2, label="Acceleration")
-ax2.legend(loc = "upper left")
-
-time = np.linspace(0, endtime, steps)
-apos = np.zeros(steps+1)
-apos[0] = earthRadius
-avel = np.zeros(steps+1)
-aacc = np.zeros(steps+1)
-
-line = [posline, velline, accline]
-def animate(i):
-    aacc[i] = grav(apos[i])
-    avel[i+1] = avel[i] + aacc[i]*dt
-    apos[i+1] = apos[i] + avel[i+1]*dt
-    
-    effectiveEarth.set_radius(abs(apos[i]/1000))
-    you.center = 0, apos[i]/1000
-    
-    line[0].set_data(time[0:i], apos[0:i]/(np.amax(positions)))
-    line[1].set_data(time[0:i], avel[0:i]/(np.amax(velocities)))
-    line[2].set_data(time[0:i], aacc[0:i]/(np.amax(accelerations)))
-    return line,
-
-anim = animation.FuncAnimation(fig, animate, frames=steps, interval=100)
-plt.close()
-```
-
-
-Converting the animation to a HTML video can take around a minute.
-
-
-
-{:.input_area}
-```python
-HTML(anim.to_jshtml())
-```
-
 
 ### Summary and Conclustion
 
