@@ -55,3 +55,4 @@
   - title: How long would it take to fall into space?
     url: /features/FallingIntoSpace
     not_numbered: true
+    use_binder_button: true
