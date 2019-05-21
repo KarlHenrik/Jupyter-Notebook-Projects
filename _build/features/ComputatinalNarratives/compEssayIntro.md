@@ -1,12 +1,12 @@
 ---
 redirect_from:
-  - "/features/compessayintro"
-title: 'Computational Essays'
+  - "/features/computatinalnarratives/compessayintro"
+title: 'Computational Narratives'
 prev_page:
-  url: https://github.com/KarlHenrik/KHBook
+  url: /https://github.com/KarlHenrik/KHBook
   title: 'GitHub repository'
 next_page:
-  url: /features/FallingThroughTheEarth
+  url: /features/ComputatinalNarratives/FallingThroughTheEarth
   title: 'How long would it take to fall through the Earth?'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---

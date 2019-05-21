@@ -43,14 +43,14 @@
 - header: A Bad Computational Book
 
 # A chapter w/ a collection of sections beneath it
-- title: Computational Essays
-  url: /features/compEssayIntro
+- title: Computational Narratives
+  url: /features/ComputatinalNarratives/compEssayIntro
   not_numbered: true
   expand_sections: true
   sections:
   - title: How long would it take to fall through the Earth?
-    url: /features/FallingThroughTheEarth
+    url: /features/ComputatinalNarratives/FallingThroughTheEarth
     not_numbered: true
   - title: How long would it take to fall into space?
-    url: /features/FallingIntoSpace
+    url: /features/ComputatinalNarratives/FallingIntoSpace
     not_numbered: true

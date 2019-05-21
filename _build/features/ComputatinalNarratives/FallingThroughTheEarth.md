@@ -1,15 +1,14 @@
 ---
 redirect_from:
-  - "/features/fallingthroughtheearth"
-interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\KHBook\content\features/FallingThroughTheEarth.ipynb
+  - "/features/computatinalnarratives/fallingthroughtheearth"
+interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\KHBook\content\features/ComputatinalNarratives/FallingThroughTheEarth.ipynb
 kernel_name: python3
-has_widgets: false
 title: 'How long would it take to fall through the Earth?'
 prev_page:
-  url: /features/compEssayIntro
-  title: 'Computational Essays'
+  url: /features/ComputatinalNarratives/compEssayIntro
+  title: 'Computational Narratives'
 next_page:
-  url: /features/FallingIntoSpace
+  url: /features/ComputatinalNarratives/FallingIntoSpace
   title: 'How long would it take to fall into space?'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -111,7 +110,7 @@ plt.show()
 
 
 {:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/FallingThroughTheEarth_21_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputatinalNarratives/FallingThroughTheEarth_21_0.png)
 
 
 
@@ -156,7 +155,7 @@ plt.show()
 
 
 {:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/FallingThroughTheEarth_28_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputatinalNarratives/FallingThroughTheEarth_28_0.png)
 
 
 
@@ -236,7 +235,7 @@ plt.show()
 
 
 {:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/FallingThroughTheEarth_37_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputatinalNarratives/FallingThroughTheEarth_37_0.png)
 
 
 
@@ -333,7 +332,7 @@ Total error = 1.0836096370862585
 
 
 {:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/FallingThroughTheEarth_46_1.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputatinalNarratives/FallingThroughTheEarth_46_1.png)
 
 
 
@@ -359,7 +358,7 @@ plt.show()
 
 
 {:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/FallingThroughTheEarth_48_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputatinalNarratives/FallingThroughTheEarth_48_0.png)
 
 
 
@@ -452,7 +451,7 @@ plt.show()
 
 
 {:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/FallingThroughTheEarth_59_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputatinalNarratives/FallingThroughTheEarth_59_0.png)
 
 
 
@@ -521,7 +520,7 @@ plt.show()
 
 
 {:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/FallingThroughTheEarth_67_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputatinalNarratives/FallingThroughTheEarth_67_0.png)
 
 
 
