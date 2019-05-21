@@ -4,7 +4,7 @@ prev_page:
   url: 
   title: ''
 next_page:
-  url: https://github.com/KarlHenrik/KHBook
+  url: /https://github.com/KarlHenrik/KHBook
   title: 'GitHub repository'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
