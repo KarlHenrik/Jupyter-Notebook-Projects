@@ -3,7 +3,7 @@ redirect_from:
   - "/features/computationalnarratives/compessayintro"
 title: 'Computational Narratives'
 prev_page:
-  url: /https://github.com/KarlHenrik/KHBook
+  url: https://github.com/KarlHenrik/KHBook
   title: 'GitHub repository'
 next_page:
   url: /features/ComputationalNarratives/FallingThroughTheEarth

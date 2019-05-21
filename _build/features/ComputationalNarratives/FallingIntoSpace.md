@@ -1,8 +1,9 @@
 ---
 redirect_from:
   - "/features/computationalnarratives/fallingintospace"
-interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\KHBook\content\features/ComputationalNarratives/FallingIntoSpace.ipynb
+interact_link: content/features/ComputationalNarratives/FallingIntoSpace.ipynb
 kernel_name: python3
+has_widgets: false
 title: 'How long would it take to fall into space?'
 prev_page:
   url: /features/ComputationalNarratives/FallingThroughTheEarth
@@ -37,21 +38,24 @@ So what does falling mean? In physics, something is in free fall when it is affe
 
 In this essay we will define a formula for anti-gravity and air-resistance, and use them together with the Euler-Cromer method to calculate the movement of the fall.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 import numpy as np #Numpy is useful for calculations
 import matplotlib.pyplot as plt #Matplotlib gives us access to plotting tools for showing our results
 print("hello2")
 ```
+</div>
 
-
-{:.output .output_stream}
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
 ```
 hello2
-
 ```
+</div>
+</div>
+</div>
 
 ### Anti-Gravity
 
@@ -65,9 +69,8 @@ What this means in practice is that a force given by the formula $ F = \frac{GMm
 
 Just like with ordinary gravity, you mass won't have an impact on your acceleration. Newtons second law together with our formula for anti-gravity gives us that $F = ma = \frac{GMm}{r^2} \Rightarrow a = \frac{GM}{r^2} $
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 G = 6.674 * 10**(-11) #Gravitational constant
 M = 5.972 * 10**24 #Mass of the Earth
@@ -80,7 +83,9 @@ def antiGravAccel(h):
 #If you were to add a minus sign here, you would have a function for normal gravity instead, pushing you down
 #You should try reversing gravity again and starting the fall up in the air to see how a "normal fall" would be
 ```
+</div>
 
+</div>
 
 ## Air Resistance
 
@@ -90,15 +95,16 @@ Calculating air resistance can be as complex as you want it to be. Real world ob
 
 The drag equation is given by $F_D = \frac{1}{2} \rho v^2 C_D A$ where $\rho$ is the air-density, $v$ is the velocity, $C_D$ is the drag coefficient, and $A$ is the cross sectional area.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 def drag(rho, v, Cd, A):
     return -0.5 * rho * v * abs(v) * Cd * A
 #The minus sign and the v * abs(v) here insures that drag will work in the direction opposite of the one you're moving
 ```
+</div>
 
+</div>
 
 We will be looking at you falling, so we will use a cross sectional area of $0.18m^2$ and a drag coefficient of $0.7$ for a head first fall. (Alternatively, we could have used a cross sectional area of $0.7m^2$ and a drag coefficient of $1.0$ for a belly-to-earth position.)
 
@@ -122,9 +128,8 @@ The US Standard Atmosphere splits the atmosphere into 12 layers, starting at 0m 
 
 For each layer there is a given starting height, temperature and pressure, in addition to a given temperature change. With these four values together with some other constants and formulas we can find the density at any height under 86km. If you want to better understand how the US Standard Atmosphere is defined and used you can read the document describing the model <a href="https://ntrs.nasa.gov/search.jsp?R=19770009539">here</a>, or read the Wikipedia article <a href="https://en.wikipedia.org/wiki/U.S._Standard_Atmosphere">here</a>. Parts of the model use something called <a href="https://en.wikipedia.org/wiki/Geopotential_height">geopotential height</a>, which is kind of a gravity-adjusted height often used by geophysical scientists and in weather forecast models.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 def USStdAtmos(Z): #Input is height in meters
     r0 = 6356.766 #The Radius of the Earth in km
@@ -185,13 +190,14 @@ def USStdAtmos(Z): #Input is height in meters
                               #the temperature above 86km as it is of no use on its own in this essay.
     return T, P, rho  #We only need density(rho), but temperature and pressure are also interesting to look at
 ```
+</div>
 
+</div>
 
 We only really need the density, but the function also returns temperature and pressure so that we can plot them together and see how they relate.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 heights = np.linspace(0,86,10000)
 results = [USStdAtmos(Z*1000) for Z in heights]
@@ -220,13 +226,17 @@ plt.title("Density")
 
 plt.show()
 ```
+</div>
 
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
 
+{:.output_png}
+![png](../../images/features/ComputationalNarratives/FallingIntoSpace_25_0.png)
 
-{:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingIntoSpace_25_0.png)
-
-
+</div>
+</div>
+</div>
 
 The air at sea level is being pushed down by all of the air above it, resulting in the air having high pressure and density. As we move upward, less air is pushing the air down, resulting in lower pressure and density. Temperature changes also plays a role in the density and pressure of the air, as warming a gas makes it expand. However, these effects are not as apparent.
 
@@ -236,22 +246,22 @@ Put simply, near the warm ground the air is also warm. As you travel further up,
 
 We now have functions for finding the anti-gravity and air resistance as you fall into space. We can combine them into a function for finding acceleration. We need to divide the force of air resistance by your mass to find the effect it has on your acceleration. Remember that your mass has no impact on the anti-gravity acceleration.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 def acceleration(height, velocity, Cd, A, m):
     density = USStdAtmos(height)[2] #Note that the USStdAtmos fuction returns density as its third return value, hence the [2]
     airRes = drag(density, velocity, Cd, A)
     return airRes/m + antiGravAccel(height)
 ```
+</div>
 
+</div>
 
 From here we need to define our initial conditions. We'll use the drag coefficient of 0,7 and cross sectional area of 0.18m^2 for a head first fall. We will also assume you have a mass of 80kg, and that you start on the ground with no initial velocity.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 #These values gives us a good look at a fall from 0 to 100km
 n = 20000  #The number of steps in the Euler-Cromer calculation
@@ -276,15 +286,16 @@ Cd = 0.7 #Drag coefficient (0.7 for a head first fall)
 A = 0.18 #Cross sectional area (1.0 for a head first fall)
 m = 80   #Mass
 ```
+</div>
 
+</div>
 
 Feel free to change the mass, drag coefficient or cross-sectional area to see how the results would change. A different starting position and velocity could also lead to some interesting results.
 
 We have our initial conditions and function for acceleration in order, so all that's left is using the Euler-Cromer method to find the positions, velocities and accelerations of the movement over time:
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 for i in range(n-1):
     acc[i] = acceleration(pos[i], vel[i], Cd, A, m)
@@ -301,7 +312,9 @@ acc[n-1] = acceleration(pos[n-1], vel[n-1], Cd, A, m)
 grv[n-1] = antiGravAccel(pos[n-1])
 velsq[n-1] = vel[n-1]**2
 ```
+</div>
 
+</div>
 
 We use the Euler-Cromer method due to the fact that there is no simple way to get a function for the position or velocity.
 
@@ -313,9 +326,8 @@ Using this velocity we find the position we would have after a small time step i
 
 We can plot height, velocity and acceleration next to eachother to get a look at how they change during the fall.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 plt.figure(figsize=(19,4))
 plt.subplot(131)
@@ -343,13 +355,17 @@ plt.legend()
 
 plt.show()
 ```
+</div>
 
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
 
+{:.output_png}
+![png](../../images/features/ComputationalNarratives/FallingIntoSpace_37_0.png)
 
-{:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingIntoSpace_37_0.png)
-
-
+</div>
+</div>
+</div>
 
 We observe that anti-gravity stays almost constant through the entire fall, reducing more rapidly towards the end as you rapidly gain more distance from the Earth. Towards the end of the fall into space, anti-gravity is virtually the only contrubutor to the acceleration, as there is no longer a lot of atmosphere to slow you down. The acceleration due to drag has a lot more going on though, it quickly tries to balance out anti-gravity to keep the velocity constant, but then gradually becomes weaker as the atmosphere becomes thinner. We will take a closer look at how this happens in the next section.
 
@@ -359,9 +375,8 @@ Height increases very linearly at first, due to the speed being relatively const
 
 ### Analyzing Acceleration due to Drag
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 plt.figure(figsize=(19,4))
 plt.subplot(131)
@@ -387,13 +402,17 @@ plt.grid()
 
 plt.show()
 ```
+</div>
 
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
 
+{:.output_png}
+![png](../../images/features/ComputationalNarratives/FallingIntoSpace_40_0.png)
 
-{:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingIntoSpace_40_0.png)
-
-
+</div>
+</div>
+</div>
 
 Acceleration due to drag starts at 0, due to you starting with no velocity, and ends at 0, due to the lack of air in the upper atmosphere.
 
@@ -409,22 +428,25 @@ In the first 25 seconds of the fall, you can see something very similar happenin
 
 We can search through the different heights to find the time it takes to reach 100km. We do this by looping through our results until the height is above 100km, and then extracting the current time.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 for i in range(len(pos)):
     if pos[i] >= 100000: #If your height reaches 100km
         print(time[i])   #we print the current time
         break            #and stop searching by breaking the loop
 ```
+</div>
 
-
-{:.output .output_stream}
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
 ```
 249.4824741237062
-
 ```
+</div>
+</div>
+</div>
 
 We find that it takes 249,5 seconds to fall into space!
 

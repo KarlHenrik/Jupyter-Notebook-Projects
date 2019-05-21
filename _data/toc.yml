@@ -23,7 +23,7 @@
 
 # Top-level page
 - title: Home
-  url: /intro
+  url: /features/intro
   not_numbered: true
 
 # External link

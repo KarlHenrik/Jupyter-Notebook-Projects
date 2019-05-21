@@ -1,8 +1,9 @@
 ---
 redirect_from:
   - "/features/computationalnarratives/fallingthroughtheearth"
-interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\KHBook\content\features/ComputationalNarratives/FallingThroughTheEarth.ipynb
+interact_link: content/features/ComputationalNarratives/FallingThroughTheEarth.ipynb
 kernel_name: python3
+has_widgets: false
 title: 'How long would it take to fall through the Earth?'
 prev_page:
   url: /features/ComputationalNarratives/compEssayIntro
@@ -57,15 +58,16 @@ We will let M be the mass that is pulling them down. M will vary however, so we 
 
 For plotting and calculations we import numpy, pyplot and polynomial.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 import numpy as np #Used for mathematical functions and constants
 import matplotlib.pyplot as plt #Used for plotting
 import numpy.polynomial.polynomial as poly #Used later for finding a polynomial that approximates the data
 ```
+</div>
 
+</div>
 
 The Preliminary Reference Earth Model gives us the density of the Earth at different distances from the center. 
 
@@ -73,9 +75,8 @@ The data can be found here: http://ds.iris.edu/ds/products/emc-prem/ at "Model D
 
 Let us read the data and store them in arrays.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 radius = []
 density = []
@@ -91,13 +92,14 @@ infile.close()
 radius = np.array(radius) #We change radius and density to numpy arrays in order to easily manipulate them by 1000 for plotting
 density = np.array(density)
 ```
+</div>
 
+</div>
 
 By using pylot we can plot the data:
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 plt.plot(radius/1000,density/1000) #Dividing by 1000 to get more plot-friendly units
 plt.xlabel("Radius [km]")
@@ -106,13 +108,17 @@ plt.title("The density of the Earth at different radiuses")
 plt.grid()
 plt.show()
 ```
+</div>
 
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
 
+{:.output_png}
+![png](../../images/features/ComputationalNarratives/FallingThroughTheEarth_21_0.png)
 
-{:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingThroughTheEarth_21_0.png)
-
-
+</div>
+</div>
+</div>
 
 *This image (taken from <a href="https://en.wikipedia.org/wiki/Structure_of_the_Earth">en.wikipedia.org/wiki/Structure_of_the_Earth</a>) shows how the different layers and densities of the earth fit together.*
 
@@ -128,9 +134,8 @@ Note that we use the same density for the inner and outer sphere to calculate th
 
 $$ M_{shell} = M_{outer} - M_{inner} = \frac{4}{3}\pi r_{outer}^3 Density - \frac{4}{3}\pi r_{inner}^3 Density $$
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 pi = np.pi
 masses = []
@@ -151,31 +156,38 @@ plt.title("Mass of the Earth at different radiuses")
 plt.grid()
 plt.show()
 ```
+</div>
 
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
 
+{:.output_png}
+![png](../../images/features/ComputationalNarratives/FallingThroughTheEarth_28_0.png)
 
-{:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingThroughTheEarth_28_0.png)
-
-
+</div>
+</div>
+</div>
 
 We see that the total mass increases very slowly near the center, and faster near the surface. While the density is higher near the center, the volume is much smaller. Meaning that the total mass does not change much when the radius increases at first, as the volume of the inner shells are so small.
 
 We can compare the total mass at the outermost radius, with the actual mass of the Earth, which is $5.972*10^{24}kg$, to get an idea of the accuracy of our calculations.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 print("The total mass we find using this model is {:.3E} kg".format(masses[-1]))
 ```
+</div>
 
-
-{:.output .output_stream}
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
 ```
 The total mass we find using this model is 5.973E+24 kg
-
 ```
+</div>
+</div>
+</div>
 
 This accuracy is encouraging. Note that the total mass is not the only useful result here, as we will use the mass at different radiuses as well.
 
@@ -189,9 +201,8 @@ F = ma \Rightarrow a = \frac{F}{m} = \frac{GMm}{r^2m} = \frac{GM}{r^2}
 \end{align*}
 $$
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 G = 6.674 * 10**(-11) #The gravitational constant
 acceleration = []
@@ -201,13 +212,14 @@ for i in range(1,len(radius)):
     acceleration.append(G*masses[i]/(radius[i]**2))
 acceleration = np.array(acceleration)
 ```
+</div>
 
+</div>
 
 We can plot these findings as well. We are eventually going to need a general function for gravity since this dataset does not give us the acceleration at the distances between the data points. To better show this we can plot the data as points next to our smooth graph.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 plt.figure(figsize=(19, 4))
 plt.subplot(131)
@@ -231,13 +243,17 @@ plt.title("Gravity as you fall from the surface")
 
 plt.show()
 ```
+</div>
 
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
 
+{:.output_png}
+![png](../../images/features/ComputationalNarratives/FallingThroughTheEarth_37_0.png)
 
-{:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingThroughTheEarth_37_0.png)
-
-
+</div>
+</div>
+</div>
 
 On the red graph we see that when you start falling, the acceleration will first stay nearly constant before increasing slightly. This is because, as we get closer to the more dense inner parts of the Earth, the gravitational pull from them will increase. Since the outer layers are so much less dense than the mantle or core, we do not "lose" much gravitational pull compared to the pull we gain from being closer to the denser parts. When we are at around 3500 km gravity starts weakening. This happens because the amount of mass pulling us down is starting to reduce fast.
 
@@ -247,9 +263,8 @@ So far we have worked out the acceleration at all the points that our dataset co
 
 We can achieve this by using the method <a href="https://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.polynomial.polynomial.polyfit.html">polyfit.</a> Polyfit uses linear algebra to find the polynomial that best fits the data points given. I have found that a polynomial of degree 3 works well here, and that using a separate polynomial before and after the maximum spike of the acceleration offers greater accuracy.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 turn = np.argmax(acceleration) #The spike in the acceleration graph
 deg = 3
@@ -277,23 +292,28 @@ def grav(r):
             sum += coefs2[i]*dist**(i)
         return(direc*sum)
 ```
+</div>
 
+</div>
 
 We will not look too much into how we generate these functions that approximate the graph for gravity we found earlier. However, it is important to understand that what we did was find polynomials that have graphs that are similar to the one we just plotted. If we write out the coefficients of the first polynomial, the one that approximates gravity between the surface and the "spike" in gravity, they look like this:
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 print(coefs1)
 ```
+</div>
 
-
-{:.output .output_stream}
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
 ```
 [-2.93375495e-02  3.87773093e-06 -2.39818116e-13  3.84955504e-21]
-
 ```
+</div>
+</div>
+</div>
 
 $$
 \begin{align*}
@@ -304,9 +324,8 @@ $$
 
 To show this new general function in relation to the values for gravitational acceleration we found from the data, we can plot them together and summarize the errors for every point:
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 accelApprox = [abs(grav(r)) for r in radius] #Note that we are only interested in the size of the acceleration here
 error = 0
@@ -322,27 +341,32 @@ plt.title("Acceleration using the data and the approximation")
 plt.legend()
 plt.show()
 ```
+</div>
 
-
-{:.output .output_stream}
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
 ```
-Total error = 1.0836096370862585
-
+Total error = 1.0836096370860657
 ```
+</div>
+</div>
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
 
+{:.output_png}
+![png](../../images/features/ComputationalNarratives/FallingThroughTheEarth_46_1.png)
 
-{:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingThroughTheEarth_46_1.png)
-
-
+</div>
+</div>
+</div>
 
 We can see that there is very little difference. This function for gravitational acceleration works for the distances in between the points in our dataset, *and* the ones outside. When we are further out than the radius of the Earth (outside the ground), the function gives us the acceleration using the formula $\frac{GM}{r^2}$ with the total mass of the Earth as M. This means that we can find the acceleration outside the Earth and all over the insides of the Earth.
 
 So far we have looked at positive distances and positve accelerations for the sake of seing how their sizes relate. From now on we will include the direction of gravity in our calculations. When we are above the center, gravity will point down, and when we are below the center, gravity will point up. The sign of gravity will be the opposite of the sign of our height.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 rads = np.linspace(-radius[-1]*1.5,radius[-1]*1.5,10000)
 accs = np.array([grav(i) for i in rads])
@@ -354,13 +378,17 @@ plt.title("The gravitational acceleration from the Earth inside and outside")
 plt.grid()
 plt.show()
 ```
+</div>
 
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
 
+{:.output_png}
+![png](../../images/features/ComputationalNarratives/FallingThroughTheEarth_48_0.png)
 
-{:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingThroughTheEarth_48_0.png)
-
-
+</div>
+</div>
+</div>
 
 With our function for gravitational acceleration, we are ready to start calculating the movement.
 
@@ -368,14 +396,15 @@ With our function for gravitational acceleration, we are ready to start calculat
 
 We will first need to define some parameters. I found that 10000 steps of 1 second gives good accuracy and speed for the purpose of this essay.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 n = 10000 #number of steps in our calculation
 dt = 1 #number of seconds each step takes
 ```
+</div>
 
+</div>
 
 Our position will be starting at the surface of the Earth (at a heigh equal to the Earth's radius), and will then decrease as we get closer to the center, reaching negative values when we are below the center.
 
@@ -383,9 +412,8 @@ Our velocity will start at 0m/s and will then decrease as we accelerate downward
 
 These arrays will be filled with the results of our calculations as we use the Euler-Cromer method, and will be used for plotting.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 positions = np.zeros(n)
 positions[0] = earthRadius #You can change this initial height to see how the fall would look like from outer space for example
@@ -399,13 +427,14 @@ accelerations = np.zeros(n)
 
 times = np.linspace(0,n*dt,n)
 ```
+</div>
 
+</div>
 
 We have our initial conditions and function for acceleration in order, so all that's left is using the Euler-Cromer method to find the positions, velocities and accelerations of the movement over time:
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 for i in range(n-1):
     accelerations[i] = grav(positions[i])
@@ -413,15 +442,16 @@ for i in range(n-1):
     positions[i+1] = positions[i] + velocities[i+1]*dt
 accelerations[n-1] = grav(positions[n-1]) #The acceleration at the end is not calculated during the loop
 ```
+</div>
 
+</div>
 
 We use the Euler-Cromer method due to the fact that there is no simple way to get a function for the position. We have no way of finding the exact position and velocity that we will have in the future, so instead we find the acceleration right now and use that to find the velocity we would have after a small time step if the acceleration was constant (which it pretty much is over a small time step). Using this velocity we find the position we would have after a small time step if velocity was constant (which it pretty much is over a small time step). With enough of these time steps we can approximate a movement with a variable acceleration and velocity over a longer period of time.
 
 We can plot our results side by side in subplots:
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 plt.figure(figsize=(19, 4))
 plt.subplot(131)
@@ -447,13 +477,17 @@ plt.grid()
 
 plt.show()
 ```
+</div>
 
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
 
+{:.output_png}
+![png](../../images/features/ComputationalNarratives/FallingThroughTheEarth_59_0.png)
 
-{:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingThroughTheEarth_59_0.png)
-
-
+</div>
+</div>
+</div>
 
 We see that we would fall all the way through and then back again, and then back again and so on. Given that gravity is a conservative force, it makes sense that we would never stop moving, but rather fall back and forth around the center.
 
@@ -461,9 +495,8 @@ We see that we would fall all the way through and then back again, and then back
 
 Now we have all that we need to find out how long it takes to fall through the Earth. To find out the time it takes, we need to find out how long it takes to reach the first dip of the position graph, as that is the "bottom" of the Earth.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 #In order to not find out the time of the second dip, we only look at the positions up to a time of 3000, to be safe
 minIndex = np.argmin(positions[:3000]) #Index of the lowest value of positions, when we are at the opposite end of the Earth
@@ -472,38 +505,44 @@ exSeconds = times[minIndex]%60
 print("The time it takes to travel through the Earth is {:.0f} minutes and {:.0f} seconds.".format(minutes,exSeconds))
 #time uses seconds, so we divide by 60 to get minutes, and use %60 to get the remainder of the division
 ```
+</div>
 
-
-{:.output .output_stream}
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
 ```
 The time it takes to travel through the Earth is 38 minutes and 10 seconds.
-
 ```
+</div>
+</div>
+</div>
 
 We find that it takes slightly over 38 minutes to fall through the Earth. That would be 38 minutes of feeling weightless in free fall before coming to a slow stop at the other end of the Earth, hanging upside down in the air. For comparison, it would take a Boeing 787 almost an entire day to fly halfway around the world.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 topSpeed = np.amax(velocities) #The highest value in velocities
 print("The highest speed reached during the fall is {:.0f} m/s.".format(topSpeed))
 ```
+</div>
 
-
-{:.output .output_stream}
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+{:.output_stream}
 ```
 The highest speed reached during the fall is 9920 m/s.
-
 ```
+</div>
+</div>
+</div>
 
 On your way down you reach a top speed of 9,920 m/s. That is equal to 35,712 kilometers per hour, or 22,190 miles per hour. That is only slightly slower than the fastest manned object, the Apollo 10, which reached a top speed of 11,107 m/s when returning from the Moon. It is also a fair bit faster than the typical speed of the ISS and other satellites orbiting the Earth, which travel at around 7,700 m/s (which is about the speed we would reach if the Earth had a constant density).
 
 To better look at how position, velocity and acceleration change in relation to each other throughout the fall, we can normalize the arrays by dividing each array by its greatest value and then show them in the same plot.
 
-
-
-{:.input_area}
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
 ```python
 plt.figure(figsize=(19, 4))
 plt.plot(times,positions/(np.amax(positions)),label="Position")
@@ -516,13 +555,17 @@ plt.legend()
 plt.grid()
 plt.show()
 ```
+</div>
 
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
 
+{:.output_png}
+![png](../../images/features/ComputationalNarratives/FallingThroughTheEarth_67_0.png)
 
-{:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingThroughTheEarth_67_0.png)
-
-
+</div>
+</div>
+</div>
 
 We see that when we reach the center (position=0), acceleration is also 0. This is also when we reach our top velocity.
 
