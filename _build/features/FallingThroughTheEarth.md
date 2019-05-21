@@ -6,7 +6,7 @@ kernel_name: python3
 title: 'How long would it take to fall through the Earth?'
 prev_page:
   url: /features/compEssayIntro
-  title: 'Falling Through The Earth'
+  title: 'Computational Essays'
 next_page:
   url: /features/FallingIntoSpace
   title: 'How long would it take to fall into space?'

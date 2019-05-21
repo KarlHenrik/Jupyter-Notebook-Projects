@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - "/features/fallingintospace"
-interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\SafeBook\KHBook\content\features/FallingIntoSpace.ipynb
+interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\KHBook\content\features/FallingIntoSpace.ipynb
 kernel_name: python3
 title: 'How long would it take to fall into space?'
 prev_page:
@@ -217,7 +217,7 @@ plt.show()
 
 
 {:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/SafeBook/KHBook/_build/images/features/FallingIntoSpace_25_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/FallingIntoSpace_25_0.png)
 
 
 
@@ -340,7 +340,7 @@ plt.show()
 
 
 {:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/SafeBook/KHBook/_build/images/features/FallingIntoSpace_37_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/FallingIntoSpace_37_0.png)
 
 
 
@@ -384,7 +384,7 @@ plt.show()
 
 
 {:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/SafeBook/KHBook/_build/images/features/FallingIntoSpace_40_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/FallingIntoSpace_40_0.png)
 
 
 
