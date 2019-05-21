@@ -67,7 +67,7 @@ import numpy.polynomial.polynomial as poly #Used later for finding a polynomial 
 ```
 
 
-The Preliminary Reference Earth Model gives us the density of the Earth at different distances from the center. 
+The Preliminary Reference Earth Model gives us the density of the Earth at different distances from the center.
 
 The data can be found here: http://ds.iris.edu/ds/products/emc-prem/ at "Model Download". I use the file "PREM_ANISOTROPIC".
 
@@ -110,7 +110,7 @@ plt.show()
 
 
 {:.output .output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/FallingThroughTheEarth_21_0.png)
+![png](../../../images/features/FallingThroughTheEarth_21_0.png)
 
 
 
@@ -143,7 +143,7 @@ for i in range(1,len(radius)):
     shellMass = 4/3*pi*radius[i]**3*shellDensity - 4/3*pi*radius[i-1]**3*shellDensity
     #We add the next total mass to the list, adding the mass of the current shell with the previous total mass
     masses.append(shellMass + masses[i-1])
-    
+
 plt.plot(radius/1000,masses)
 plt.xlabel("Radius [km]")
 plt.ylabel("Mass [kg]")
@@ -270,7 +270,7 @@ def grav(r):
         for i in range(deg+1): #a0 + a1*r + a2*r**2 + a3*r**3
             sum += coefs1[i]*dist**(i)
         return(direc*sum)
-    
+
     else: #Function 2 for distances further out than the "spike"
         sum = 0
         for i in range(deg+1):
