@@ -4,12 +4,18 @@
     width: auto !important;
 }
 .c-textbook {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
     max-width: 1550px;
     margin-left: 7%;
 }
-@media (min-width: 81.25em)
-.sidebar__right {
-    left: 50%;
+aside.sidebar__right {
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', Arial, sans-serif;
+    color: #7a8288;
+    border-left: 1px solid #c3c3c3;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     transform: translateX(452px);
 }
 .o-wrapper {
