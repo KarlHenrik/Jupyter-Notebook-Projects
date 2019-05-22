@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - "/features/computationalnarratives/fallingintospace"
-interact_link: content/features/ComputationalNarratives/FallingIntoSpace.ipynb
+interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\KHBook\content\features/ComputationalNarratives/FallingIntoSpace.ipynb
 kernel_name: python3
 has_widgets: false
 title: 'How long would it take to fall into space?'
@@ -32,7 +32,7 @@ Taken 12.February 1984 (from <a href="https://commons.wikimedia.org/wiki/File:As
 
 ## What does it mean to fall into space?
 
-We have a pretty good idea about what space is, it's everything outside the Earth. But where does Earth stop and space begin? The atmosphere disappears so gradually that there is no definitive anwser. An altitude of 100km above sea level is often used to mark the beginning of space for space, this limit is called the KÃ¡rmÃ¡n line. This is the height you will be falling to in this thought-experiment.
+We have a pretty good idea about what space is, it's everything outside the Earth. But where does Earth stop and space begin? The atmosphere disappears so gradually that there is no definitive anwser. An altitude of 100km above sea level is often used to mark the beginning of space for space, this limit is called the Kármán line. This is the height you will be falling to in this thought-experiment.
 
 So what does falling mean? In physics, something is in free fall when it is affected only by gravity. This means that the object could be moving in any direction, as long as there are no other forces acting on it. We will not be looking at this kind of fall. Instead of gravity, we will be looking at a kind of anti-gravity. Furthermore, it will not be the only force acting on the object, as we will include air resistance in our model.
 
@@ -122,7 +122,7 @@ To find the density at your current height in your fall, we will use the model f
 
 <img src="Resources/FallingIntoSpaceResources/SpaceView.jpg" alt="Drawing" style="width: 80%;"/>
 
-The Earthâ€™s stratosphere using a high altitude weather balloon. (from <a href="https://commons.wikimedia.org/wiki/File:Curvature_of_the_Earth.png"> Wikimedia Commons</a>)
+The Earth’s stratosphere using a high altitude weather balloon. (from <a href="https://commons.wikimedia.org/wiki/File:Curvature_of_the_Earth.png"> Wikimedia Commons</a>)
 
 The US Standard Atmosphere splits the atmosphere into 12 layers, starting at 0m and going all the way to 100km. We will only find the density up to 86km, as the models after that point are more complex, and unnecesary for the purpose of this essay, given that the air resistance is effectively zero after that point.
 
@@ -232,7 +232,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/ComputationalNarratives/FallingIntoSpace_25_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingIntoSpace_25_0.png)
 
 </div>
 </div>
@@ -361,7 +361,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/ComputationalNarratives/FallingIntoSpace_37_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingIntoSpace_37_0.png)
 
 </div>
 </div>
@@ -408,7 +408,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/ComputationalNarratives/FallingIntoSpace_40_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingIntoSpace_40_0.png)
 
 </div>
 </div>
