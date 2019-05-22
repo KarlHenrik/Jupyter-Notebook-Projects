@@ -9,6 +9,6 @@
     max-width: 1550px;
     margin-left: 10%;
 }
-.sidebar-right {
+.sidebar__right {
     transform: translateX(554px);
 }
