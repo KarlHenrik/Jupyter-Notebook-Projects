@@ -4,13 +4,13 @@
     margin-left: 0px;
 }
 
-.output_png {
+.output_png img {
     max-width: 100%;
 }
 .c-textbook {
     max-width: 1550px;
     margin-left: 10%;
 }
-.sidebar-right {
+.sidebar__right {
     transform: translateX(554px);
 }
