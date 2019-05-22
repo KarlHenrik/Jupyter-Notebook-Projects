@@ -43,18 +43,9 @@ In this essay we will define a formula for anti-gravity and air-resistance, and 
 ```python
 import numpy as np #Numpy is useful for calculations
 import matplotlib.pyplot as plt #Matplotlib gives us access to plotting tools for showing our results
-print("hello2")
 ```
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-hello2
-```
-</div>
-</div>
 </div>
 
 ### Anti-Gravity
@@ -207,7 +198,7 @@ rho = [res[2] for res in results]
 
 plt.figure(figsize=(19,4))
 plt.subplot(131)
-plt.plot(-heights, T)
+plt.plot(heights, T)
 plt.xlabel("Height [km]")
 plt.ylabel("Temperature [Celsius]")
 plt.title("Temperature")
