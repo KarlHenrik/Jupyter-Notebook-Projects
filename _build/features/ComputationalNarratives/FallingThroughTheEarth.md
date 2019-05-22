@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - "/features/computationalnarratives/fallingthroughtheearth"
-interact_link: content/features/ComputationalNarratives/FallingThroughTheEarth.ipynb
+interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\KHBook\content\features/ComputationalNarratives/FallingThroughTheEarth.ipynb
 kernel_name: python3
 has_widgets: false
 title: 'How long would it take to fall through the Earth?'
@@ -114,7 +114,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/ComputationalNarratives/FallingThroughTheEarth_21_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingThroughTheEarth_21_0.png)
 
 </div>
 </div>
@@ -162,7 +162,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/ComputationalNarratives/FallingThroughTheEarth_28_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingThroughTheEarth_28_0.png)
 
 </div>
 </div>
@@ -249,7 +249,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/ComputationalNarratives/FallingThroughTheEarth_37_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingThroughTheEarth_37_0.png)
 
 </div>
 </div>
@@ -355,7 +355,7 @@ Total error = 1.0836096370860657
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/ComputationalNarratives/FallingThroughTheEarth_46_1.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingThroughTheEarth_46_1.png)
 
 </div>
 </div>
@@ -384,7 +384,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/ComputationalNarratives/FallingThroughTheEarth_48_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingThroughTheEarth_48_0.png)
 
 </div>
 </div>
@@ -483,7 +483,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/ComputationalNarratives/FallingThroughTheEarth_59_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingThroughTheEarth_59_0.png)
 
 </div>
 </div>
@@ -561,7 +561,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/ComputationalNarratives/FallingThroughTheEarth_67_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/KHBook/_build/images/features/ComputationalNarratives/FallingThroughTheEarth_67_0.png)
 
 </div>
 </div>
