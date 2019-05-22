@@ -347,7 +347,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-Total error = 1.0836096370860657
+Total error = 1.0836096370862585
 ```
 </div>
 </div>
