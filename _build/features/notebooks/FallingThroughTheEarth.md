@@ -9,8 +9,8 @@ prev_page:
   url: https://github.com/KarlHenrik/Jupyter-Book-Showroom
   title: 'GitHub repository'
 next_page:
-  url: /features/notebooks/FallingIntoSpace
-  title: 'How long would it take to fall into space?'
+  url: /features/notebooks/FallingThroughTheEarthWe
+  title: 'We-version'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

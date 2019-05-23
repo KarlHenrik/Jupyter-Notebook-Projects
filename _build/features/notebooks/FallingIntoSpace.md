@@ -6,11 +6,11 @@ kernel_name: python3
 has_widgets: false
 title: 'How long would it take to fall into space?'
 prev_page:
-  url: /features/notebooks/FallingThroughTheEarth
-  title: 'How long would it take to fall through the Earth?'
+  url: /features/notebooks/FallingThroughTheEarthWe
+  title: 'We-version'
 next_page:
-  url: 
-  title: ''
+  url: /features/notebooks/FallingIntoSpaceWe
+  title: 'We-version'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

@@ -8,6 +8,6 @@ next_page:
   title: 'GitHub repository'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-# A Jupyter Book
+# Introduction
 
-This is text
+This Jupyter Book is for my Jupyter Notebook work. Everything is a work in progress. Hi Tor.
