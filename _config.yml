@@ -16,12 +16,11 @@
 
 #######################################################################################
 # Jekyll site settings
-title: Karl Henrik - Jupyter Book
+title: Jupyter Book Showroom
 author: Karl Henrik Fredly
 email: karlhf@student.uv.uio.no
 description: >-
-  This Jupyter Book is a showcase and a testing ground for the things I'm working
-  on
+  This Jupyter Book is a showcase and a testing ground for the things I'm working on
 
 baseurl: /               # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
 url: YOUR URL              # the base hostname & protocol for your site, e.g. http://example.com

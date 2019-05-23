@@ -1,12 +1,12 @@
 ---
 redirect_from:
-  - "/features/computationalnarratives/fallingintospace"
-interact_link: content/features/ComputationalNarratives/FallingIntoSpace.ipynb
+  - "/features/notebooks/fallingintospace"
+interact_link: content/features/notebooks/FallingIntoSpace.ipynb
 kernel_name: python3
 has_widgets: false
 title: 'How long would it take to fall into space?'
 prev_page:
-  url: /features/ComputationalNarratives/FallingThroughTheEarth
+  url: /features/notebooks/FallingThroughTheEarth
   title: 'How long would it take to fall through the Earth?'
 next_page:
   url: 
@@ -52,7 +52,7 @@ import matplotlib.pyplot as plt #Matplotlib gives us access to plotting tools fo
 
 Gravity causes objects to attract. Gravity is what makes the Earth orbit the Sun and apples fall to the ground. To calculate the force of gravity between two objects we use the formula: $ F = \frac{GM_{1}M_{2}}{r^2} $, where $G$ is the gravitational constant, $M_1$ and $M_2$ are the masses of the objects, and $r$ is the distance between them. This gravitational force acts on both objects, and it always points from one object to the other, pulling them closer. The $r^2$ factor in the formula is essential to the behaviour of gravity, as it means that gravity is much weaker when things are futher apart.
 
-<img src="Resources/FallingIntoSpaceResources/slot.jpg" alt="Drawing" style="width: 70%;"/>
+<img src="Resources/FallingIntoSpaceResources/AntiGravity.jpg" alt="Drawing" style="width: 70%;"/>
 
 But what if gravity pointed the other way? What if gravity pushed things away from eachother? This is a very exiting question with many different avenues to explore(most of them ending with everyone dying), but it will not be the focus of this essay. Gravity will instead only push only you away from Earth.
 
@@ -223,7 +223,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/ComputationalNarratives/FallingIntoSpace_25_0.png)
+![png](../../images/features/notebooks/FallingIntoSpace_25_0.png)
 
 </div>
 </div>
@@ -352,7 +352,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/ComputationalNarratives/FallingIntoSpace_37_0.png)
+![png](../../images/features/notebooks/FallingIntoSpace_37_0.png)
 
 </div>
 </div>
@@ -399,7 +399,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/ComputationalNarratives/FallingIntoSpace_40_0.png)
+![png](../../images/features/notebooks/FallingIntoSpace_40_0.png)
 
 </div>
 </div>
