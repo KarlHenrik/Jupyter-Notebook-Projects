@@ -23,7 +23,7 @@
 
 # Top-level page
 - title: Introduction
-  url: /features/markdown/intro
+  url: /intro
   not_numbered: true
 
 # External link
