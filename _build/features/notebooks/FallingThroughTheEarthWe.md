@@ -46,7 +46,7 @@ The aforementioned factors lead to some questions and calculations beyond the sc
 
 This means that we do not have to calculate the gravitational pull from all throughout the Earth, since we can act as if all of the Earth's mass is located in its center. We also only need to worry about the what is further in than the point you are currently at.
 
-<img src="Resources/FallingThroughTheEarthResources/ShellTheorem.jpg" alt="Drawing" style="width: 70%;"/>
+<img src="Resources/FallingThroughTheEarthResources/ShellTheoremWe.jpg" alt="Drawing" style="width: 70%;"/>
 
 The gravitational force between two objects is given by $F = \frac{GMm}{r^2}$
 
