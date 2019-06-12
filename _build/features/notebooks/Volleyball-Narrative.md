@@ -1,22 +1,26 @@
 ---
 redirect_from:
-  - "/notebooks/volleyball"
-interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\Jupyter-Book-Showroom\content\notebooks/Volleyball.ipynb
+  - "/features/notebooks/volleyball-narrative"
+interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\Jupyter-Book-Showroom\content\features/notebooks/Volleyball-Narrative.ipynb
 kernel_name: python3
 has_widgets: false
-title: 'What is the fastest possible volleyball serve?'
+title: 'Narrative-version'
 prev_page:
-  url: /notebooks/FallingIntoSpace
-  title: 'How long would it take to fall into space?'
+  url: /features/notebooks/Volleyball
+  title: 'What is the fastest possible volleyball serve?'
 next_page:
-  url: /notebooks/Volleyball-Narrative
-  title: 'Narrative-version'
+  url:
+  title: ''
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
 # What is the fastest possible volleyball serve?
 
-When I was in high school I really liked playing volleyball. Getting a good serve, smash or block is one of the best feelings there is in sports. Me and a friend used to practice serving after school, hitting the ball back and forth. His serves were always way better than mine, with more power and spin, I could never quite figure it out. But maybe I can now? By using my knowledge about physics and computatuion, can I find out what it takes to make the fastest possible serve? It's worth a shot.
+I started off by giving the ball a single bounce off the floor, then a small spin throw in my hands, getting a feel for the ball. I then hold it up straight in front of me in my left hand, with my right hand at eye-level as if pulling on a bow-string. I throw the ball straight up, and start accelerating my right hand, twisting my upper body for maximum velocity. My hand strikes the ball, producing a satisfying bang, sending the ball flying through the air. It flies majestically, spinning like a ballerina, morphing into a blue and yellow blur of exellence. Then it hits the net, becoming entagled in disaster. Their serve.
+
+Filip is given the ball. He goes through the same motions, he's the one I've been copying after all. But Mozart would always be the best at playing Mozart. He hits the ball at blistering speeds, I yell "Got it!", but I didn't have it. Not even in the slightest. It hits my forearm, then the floor. Then the shame hits, hurting far more.
+
+It's been a few years since I played volleyball with Filip, but I'd guess he's still way better than me. However, should we ever meet again on the court, I'd have computational physics on my side. That might not help at all, due to my lack of talent. But there's only one way to find out, by trying to find the fastest possible serve.
 
 To do the calculations I will use numpy. And to show my results I will use matplotlib.
 
@@ -234,7 +238,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/notebooks/Volleyball_27_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_27_0.png)
 
 </div>
 </div>
@@ -303,7 +307,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/notebooks/Volleyball_34_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_34_0.png)
 
 </div>
 </div>
@@ -370,7 +374,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/notebooks/Volleyball_39_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_39_0.png)
 
 </div>
 </div>
@@ -469,7 +473,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/notebooks/Volleyball_47_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_47_0.png)
 
 </div>
 </div>
@@ -539,7 +543,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/notebooks/Volleyball_52_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_52_0.png)
 
 </div>
 </div>

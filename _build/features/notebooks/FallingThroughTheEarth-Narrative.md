@@ -1,15 +1,15 @@
 ---
 redirect_from:
-  - "/notebooks/fallingthroughtheearth-narrative"
-interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\Jupyter-Book-Showroom\content\notebooks/FallingThroughTheEarth-Narrative.ipynb
+  - "/features/notebooks/fallingthroughtheearth-narrative"
+interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\Jupyter-Book-Showroom\content\features/notebooks/FallingThroughTheEarth-Narrative.ipynb
 kernel_name: python3
 has_widgets: false
 title: 'Narrative-version'
 prev_page:
-  url: /notebooks/FallingThroughTheEarth
+  url: /features/notebooks/FallingThroughTheEarth
   title: 'How long would it take to fall through the Earth?'
 next_page:
-  url: /notebooks/FallingIntoSpace
+  url: /features/notebooks/FallingIntoSpace
   title: 'How long would it take to fall into space?'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -116,7 +116,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/notebooks/FallingThroughTheEarth-Narrative_20_0.png)
+![png](../../images/features/notebooks/FallingThroughTheEarth-Narrative_20_0.png)
 
 </div>
 </div>
@@ -166,7 +166,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/notebooks/FallingThroughTheEarth-Narrative_27_0.png)
+![png](../../images/features/notebooks/FallingThroughTheEarth-Narrative_27_0.png)
 
 </div>
 </div>
@@ -255,7 +255,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/notebooks/FallingThroughTheEarth-Narrative_35_0.png)
+![png](../../images/features/notebooks/FallingThroughTheEarth-Narrative_35_0.png)
 
 </div>
 </div>
@@ -364,7 +364,7 @@ Total error = 1.0836096370862585
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/notebooks/FallingThroughTheEarth-Narrative_44_1.png)
+![png](../../images/features/notebooks/FallingThroughTheEarth-Narrative_44_1.png)
 
 </div>
 </div>
@@ -393,7 +393,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/notebooks/FallingThroughTheEarth-Narrative_46_0.png)
+![png](../../images/features/notebooks/FallingThroughTheEarth-Narrative_46_0.png)
 
 </div>
 </div>
@@ -492,7 +492,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/notebooks/FallingThroughTheEarth-Narrative_57_0.png)
+![png](../../images/features/notebooks/FallingThroughTheEarth-Narrative_57_0.png)
 
 </div>
 </div>
@@ -573,7 +573,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/notebooks/FallingThroughTheEarth-Narrative_65_0.png)
+![png](../../images/features/notebooks/FallingThroughTheEarth-Narrative_65_0.png)
 
 </div>
 </div>
