@@ -71,7 +71,7 @@ import numpy.polynomial.polynomial as poly #Used later for finding a polynomial 
 
 </div>
 
-The Preliminary Reference Earth Model gives the density of the Earth at different distances from the center. 
+The Preliminary Reference Earth Model gives the density of the Earth at different distances from the center.
 
 The data can be found here: http://ds.iris.edu/ds/products/emc-prem/ at "Model Download". I use the file "PREM_ANISOTROPIC".
 
@@ -116,7 +116,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/FallingThroughTheEarth-Narrative_20_0.png)
+![png](../../images/features/notebooks/FallingThroughTheEarth-Narrative_20_0.png)
 
 </div>
 </div>
@@ -152,7 +152,7 @@ for i in range(1,len(radius)):
     shellMass = 4/3*pi*radius[i]**3*shellDensity - 4/3*pi*radius[i-1]**3*shellDensity
     #We add the next total mass to the list, adding the mass of the current shell with the previous total mass
     masses.append(shellMass + masses[i-1])
-    
+
 plt.plot(radius/1000,masses)
 plt.xlabel("Radius [km]")
 plt.ylabel("Mass [kg]")
@@ -166,7 +166,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/FallingThroughTheEarth-Narrative_27_0.png)
+![png](../../images/features/notebooks/FallingThroughTheEarth-Narrative_27_0.png)
 
 </div>
 </div>
@@ -255,7 +255,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/FallingThroughTheEarth-Narrative_35_0.png)
+![png](../../images/features/notebooks/FallingThroughTheEarth-Narrative_35_0.png)
 
 </div>
 </div>
@@ -263,7 +263,7 @@ plt.show()
 
 The red graph shows that as Bruce starts falling, the acceleration will first stay nearly constant before increasing slightly until about 3000km. This is because, as he gets closer to the more dense inner parts of the Earth, the gravitational pull from them will increase. Since the outer layers are so much less dense than the mantle or core, he does not "lose" much gravitational pull compared to the pull he gains from being closer to the denser parts. When he is at around 3000 km, gravity starts weakening. This happens because the amount of mass pulling him down is starting to reduce fast.
 
-As Bruce leaps into the tunnel, the entirety of the Earth is pulling him down, every atom of the Earth pulling at every atom in him. While he is in the first half of the tunnel, the traitorous parts of the Earth above him start pulling him up again, while the dense and strong core is getting ever closer to Bruce, tightening it's grip. The approaching core barely wins out, making gravity increase slowly, until gravity is at it's strongest right at the edge of the outer core. But then Bruce enters the core, making the parts of the core above him start working against the dwindling rest, resulting in gravity slowly dissipating until he reaches the center. Then, at the very center of the Earth, Bruce is being pulled in every direction equally, by the super dense core, the massive mantle, even by the ocean-filled plasitc. For a single moment in time, everything cancels itself out, as essentially nothing is trying to move Bruce anywhere, except for his blistering speed. Following this, everything happens in reverese, as if someone turned the Earth upside-down and rewinded reality. 
+As Bruce leaps into the tunnel, the entirety of the Earth is pulling him down, every atom of the Earth pulling at every atom in him. While he is in the first half of the tunnel, the traitorous parts of the Earth above him start pulling him up again, while the dense and strong core is getting ever closer to Bruce, tightening it's grip. The approaching core barely wins out, making gravity increase slowly, until gravity is at it's strongest right at the edge of the outer core. But then Bruce enters the core, making the parts of the core above him start working against the dwindling rest, resulting in gravity slowly dissipating until he reaches the center. Then, at the very center of the Earth, Bruce is being pulled in every direction equally, by the super dense core, the massive mantle, even by the ocean-filled plasitc. For a single moment in time, everything cancels itself out, as essentially nothing is trying to move Bruce anywhere, except for his blistering speed. Following this, everything happens in reverese, as if someone turned the Earth upside-down and rewinded reality.
 
 ### Creating a function to describe the acceleration
 
@@ -294,7 +294,7 @@ def grav(r): #This function returns the gravitational acceleration at any radius
         for i in range(deg+1): #a0 + a1*r + a2*r**2 + a3*r**3
             sum += coefs1[i]*dist**(i) #Adding up all of the coefficients times the radius
         return(direc*sum)
-    
+
     else: #Function 2 for distances further out than the "spike"
         sum = 0
         for i in range(deg+1):
@@ -364,7 +364,7 @@ Total error = 1.0836096370862585
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/FallingThroughTheEarth-Narrative_44_1.png)
+![png](../../images/features/notebooks/FallingThroughTheEarth-Narrative_44_1.png)
 
 </div>
 </div>
@@ -393,7 +393,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/FallingThroughTheEarth-Narrative_46_0.png)
+![png](../../images/features/notebooks/FallingThroughTheEarth-Narrative_46_0.png)
 
 </div>
 </div>
@@ -492,7 +492,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/FallingThroughTheEarth-Narrative_57_0.png)
+![png](../../images/features/notebooks/FallingThroughTheEarth-Narrative_57_0.png)
 
 </div>
 </div>
@@ -516,7 +516,6 @@ print("The time it takes to travel through the Earth is {:.0f} minutes and {:.0f
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-2290.22902290229
 The time it takes to travel through the Earth is 38 minutes and 10 seconds.
 ```
 </div>
@@ -573,7 +572,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/FallingThroughTheEarth-Narrative_65_0.png)
+![png](../../images/features/notebooks/FallingThroughTheEarth-Narrative_65_0.png)
 
 </div>
 </div>

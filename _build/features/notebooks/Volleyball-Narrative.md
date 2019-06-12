@@ -9,7 +9,7 @@ prev_page:
   url: /features/notebooks/Volleyball
   title: 'What is the fastest possible volleyball serve?'
 next_page:
-  url: 
+  url:
   title: ''
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -186,7 +186,7 @@ for i in range(num-1):
     acceleration[i] = g + drag(velocity[i])/ballmass + spinDrag(velocity[i], angvel)/ballmass
     velocity[i+1] = velocity[i] + acceleration[i]*timestep
     position[i+1] = position[i] + velocity[i+1]*timestep
-    
+
     #Detecting collision with critical regions
     distance = position[i+1][0]
     height = position[i+1][1]
@@ -238,7 +238,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball-Narrative_27_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_27_0.png)
 
 </div>
 </div>
@@ -272,7 +272,7 @@ for i in range(len(thetas)):
         a = g + drag(v)/ballmass + spinDrag(v, angvel)/ballmass
         v = v + a*dt
         p = p + v*dt
-        
+
         distance = p[0]
         height = p[1]
         if (distance < outX and height < radius and distance > netX + 0.5):
@@ -307,7 +307,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball-Narrative_34_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_34_0.png)
 
 </div>
 </div>
@@ -374,7 +374,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball-Narrative_39_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_39_0.png)
 
 </div>
 </div>
@@ -417,12 +417,12 @@ for j in range(len(velocities)):
     for k in range(len(angles)):
         angle = angles[k]
         vel[0] = [vel0 * np.cos(angle), vel0 * np.sin(angle)]
-        
+
         for i in range(n-1):
             acc[i] = g + drag(vel[i])/ballmass + spinDrag(vel[i], angvel)/ballmass
             vel[i+1] = vel[i] + acc[i]*dt
             pos[i+1] = pos[i] + vel[i+1]*dt
-        
+
             distance = pos[i+1][0]
             height = pos[i+1][1]
             if (distance < outX and height < radius and distance > netX + 0.5):
@@ -473,7 +473,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball-Narrative_47_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_47_0.png)
 
 </div>
 </div>
@@ -543,7 +543,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball-Narrative_52_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_52_0.png)
 
 </div>
 </div>
@@ -553,7 +553,7 @@ There it is, the fastest possible serve. Flying only centimetres over the net, a
 
 ## Sources and inspiration
 
-Optimizing a Volleyball Serve - Hope College Mathematics REU Summer ’06 - http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.176.6783&rep=rep1&type=pdf
+Optimizing a Volleyball Serve - Hope College Mathematics REU Summer ï¿½06 - http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.176.6783&rep=rep1&type=pdf
 
 The Magnus Effect - https://en.wikipedia.org/wiki/Magnus_effect
 
