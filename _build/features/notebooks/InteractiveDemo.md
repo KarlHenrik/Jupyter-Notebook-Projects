@@ -9,7 +9,7 @@ prev_page:
   url: /features/notebooks/Volleyball-Narrative
   title: 'Narrative-version'
 next_page:
-  url: 
+  url:
   title: ''
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -41,7 +41,7 @@ interact(update_plot_size, s=FloatSlider(value=1, min=.1, max=2, step=.1), cmap=
 <div class="output_subarea output_widget_view" markdown="1">
 {:.output_data_text}
 ```
-interactive(children=(FloatSlider(value=1.0, description='s', max=2.0, min=0.1), Dropdown(description='cmap', …
+interactive(children=(FloatSlider(value=1.0, description='s', max=2.0, min=0.1), Dropdown(description='cmap', 
 ```
 
 </div>
