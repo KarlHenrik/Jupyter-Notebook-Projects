@@ -9,8 +9,8 @@ prev_page:
   url: /features/notebooks/Volleyball
   title: 'What is the fastest possible volleyball serve?'
 next_page:
-  url:
-  title: ''
+  url: /features/notebooks/InteractiveDemo
+  title: 'Interactivity Demo'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -144,35 +144,7 @@ This leaves me with three values to find. Starting velocity, angle upward and an
 
 First I define the number of loops and the time-step for the Euler-Cromer calculation.
 
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-num = 2000
-timestep = 0.001
-
-position = np.empty((num,2))
-position[:] = np.nan #Makes the position array empty so that the (0,0)-position donesn't show up on the plot
-velocity = np.zeros((num,2))
-acceleration = np.zeros((num,2))
-```
-</div>
-
-</div>
-
 Here I define the starting velocity and angle as two arbitrary numbers that give me a good serve.
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-v0 = 16 #m/s
-theta0 = 0.32 #starting angle in radians
-
-position[0] = startingPos
-velocity[0] = [v0*np.cos(theta0) , v0*np.sin(theta0)]
-```
-</div>
-
-</div>
 
 Now I need to do two things: Calculate the movement of the ball, and find when the ball hits the ground, the net or goes out of bounds. Calculating the movement is done with the Euler-Cromer method.
 
@@ -181,38 +153,44 @@ To make sure that the serve is valid, I will need to constantly check if the bal
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-for i in range(num-1):
-    #Euler-Cromer
-    acceleration[i] = g + drag(velocity[i])/ballmass + spinDrag(velocity[i], angvel)/ballmass
-    velocity[i+1] = velocity[i] + acceleration[i]*timestep
-    position[i+1] = position[i] + velocity[i+1]*timestep
+def serve(startingVel, startingAng, n, dt):
+    v = np.array([startingVel*np.cos(startingAng), startingVel*np.sin(startingAng)])
+    p = np.empty((num,2))
+    p[:] = np.nan #Makes the position array empty so that the (0,0)-position donesn't show up on the plot
+    p[0] = startingPos
 
-    #Detecting collision with critical regions
-    distance = position[i+1][0]
-    height = position[i+1][1]
-    if (distance < outX and height < radius and distance > netX + 0.5):
-        #It hit the ground on the other side of the net
-        print("The serve took {:.2f} seconds.".format(i*timestep))
-        break
-    if (distance > outX or height < radius):
-        #It's out or it hit the ground or my side
-        print("Out after {:.2f} seconds.".format(i*timestep))
-        break
-    if ((position[i][0] <= netX <= distance) and height < netheight + radius):
-        #It's below the net
-        print("Under the net after {:.2f} seconds.".format(i*timestep))
-        break
+    for i in range(n):
+        a = g + drag(v)/ballmass + spinDrag(v, angvel)/ballmass
+        v = v + a*dt
+        p[i+1] = p[i] + v*dt
+
+        distance = p[i+1][0]
+        height = p[i+1][1]
+        if (distance < outX and height < radius and distance > netX + 0.5):
+            #It hit the ground on the other side of the net
+            return(p, i * dt)
+        if (distance > outX or height < radius):
+            #It's out or it hit the ground or my side
+            return(None, None)
+        if ((p[i][0] <= netX <= distance) and height < netheight + radius):
+            #It's below the net
+            return(None, None)
 ```
 </div>
 
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-{:.output_stream}
-```
-The serve took 1.22 seconds.
+</div>
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+num = 2000
+timestep = 0.001
+v0 = 16 #m/s
+theta0 = 0.32 #starting angle in radians
+position = serve(v0, theta0, 2000, 0.001)[0]
 ```
 </div>
-</div>
+
 </div>
 
 <div markdown="1" class="cell code_cell">
@@ -238,7 +216,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball-Narrative_27_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_26_0.png)
 
 </div>
 </div>
@@ -266,25 +244,7 @@ constVel = 16
 
 for i in range(len(thetas)):
     theta = thetas[i]
-    v = np.array([constVel*np.cos(theta), constVel*np.sin(theta)])
-    p = startingPos
-    for j in range(n):
-        a = g + drag(v)/ballmass + spinDrag(v, angvel)/ballmass
-        v = v + a*dt
-        p = p + v*dt
-
-        distance = p[0]
-        height = p[1]
-        if (distance < outX and height < radius and distance > netX + 0.5):
-            #It hit the ground on the other side of the net
-            thetime[i] = j * dt
-            break
-        if (distance > outX or height < radius):
-            #It's out or it hit the ground or my side
-            break
-        if ((distance - v[0]*dt <= netX <= distance) and height < netheight + radius):
-            #It's below the net
-            break
+    thetime[i] = serve(constVel, theta, n, dt)[1]
 ```
 </div>
 
@@ -307,7 +267,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball-Narrative_34_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_33_0.png)
 
 </div>
 </div>
@@ -333,25 +293,7 @@ constAngle = 0.32
 
 for i in range(len(vels)):
     vel = vels[i]
-    v = np.array([vel * np.cos(constAngle), vel * np.sin(constAngle)])
-    p = startingPos
-    for j in range(n):
-        a = g + drag(v)/ballmass + spinDrag(v, angvel)/ballmass
-        v = v + a*dt
-        p = p + v*dt
-
-        distance = p[0]
-        height = p[1]
-        if (distance < outX and height < radius and distance > netX + 0.5):
-            #It hit the ground on the other side of the net
-            veltime[i] = j * dt
-            break
-        if (distance > outX or height < radius):
-            #It's out or it hit the ground or my side
-            break
-        if ((distance - v[0]*dt <= netX <= distance) and height < netheight + radius):
-            #It's below the net
-            break
+    veltime[i] = serve(vel, constAngle, n, dt)[1]
 ```
 </div>
 
@@ -374,7 +316,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball-Narrative_39_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_38_0.png)
 
 </div>
 </div>
@@ -382,7 +324,7 @@ plt.show()
 
 This isn't as intuitive. Lower starting velocity leads to faster serves. An important caveat here is that the angle is constant though. The lowest speed leads to the lowest trajectory, which again reduces the distance from the ball to the ground. With the result for changing angle and for changing velocity, it seems like the best strategy is reaching as low an angle as possible, and then finding the lowest possible speed for that angle.
 
-# Finding the fastest possible serve
+## Finding the fastest possible serve
 
 So far I have changed the velocity and angle seperately for a pretty average serve, to see what impact the changes make on the total time of the serve. However, to find the fastest possible serve I will need to find the combination of angle and velocity that results in the lowest possible time.
 
@@ -407,34 +349,12 @@ time[:] = np.nan
 ```python
 n = 200
 dt = 0.025
-pos = np.zeros((n,2))
-vel = np.zeros((n,2))
-acc = np.zeros((n,2))
-pos[0] = startingPos
 
 for j in range(len(velocities)):
     vel0 = velocities[j]
     for k in range(len(angles)):
         angle = angles[k]
-        vel[0] = [vel0 * np.cos(angle), vel0 * np.sin(angle)]
-
-        for i in range(n-1):
-            acc[i] = g + drag(vel[i])/ballmass + spinDrag(vel[i], angvel)/ballmass
-            vel[i+1] = vel[i] + acc[i]*dt
-            pos[i+1] = pos[i] + vel[i+1]*dt
-
-            distance = pos[i+1][0]
-            height = pos[i+1][1]
-            if (distance < outX and height < radius and distance > netX + 0.5):
-                #It hit the ground on the other side of the net
-                time[k][j] = i*dt #Saving the time the serve takes for later analysis
-                break
-            if (distance > outX or height < radius):
-                #It's out or it hit the ground or my side
-                break
-            if ((pos[i][0] <= netX <= distance) and height < netheight + radius):
-                #It's below the net
-                break
+        time[k][j] = serve(vel0, angle, n, dt)[1] #Saving the time the serve takes for later analysis
 ```
 </div>
 
@@ -473,7 +393,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball-Narrative_47_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_46_0.png)
 
 </div>
 </div>
@@ -507,23 +427,14 @@ With the best starting angle and velocity, I can plot the fastest possible serve
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-n = 1000
-dt = 0.01
-bpos = np.zeros((n,2))
-bvels = np.zeros((n,2))
-bacc = np.zeros((n,2))
-bpos[0] = startingPos
-bvels[0] = [bvel*np.cos(btheta) , bvel*np.sin(btheta)]
-
-for i in range(n-1):
-    bacc[i] = g + drag(bvels[i])/ballmass + spinDrag(bvels[i], angvel)/ballmass
-    bvels[i+1] = bvels[i] + bacc[i]*dt
-    bpos[i+1] = bpos[i] + bvels[i+1]*dt
+n = 200
+dt = 0.025
+bpos = serve(bvel, btheta, n, dt)[0]
 
 plt.figure(figsize=(8, 4))
 plt.plot(bpos[:, 0], bpos[:, 1] - radius, label="Ball Trajectory")
 plt.xlim(0, 18 + 1)
-plt.ylim(0, np.amax(bpos[:,1])+0.5)
+plt.ylim(0, np.nanmax(bpos[:,1])+0.5)
 
 plt.plot([9,9],[0,netheight], label="The net")
 plt.plot([18,18],[0,1], label="The end of the court")
@@ -543,7 +454,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball-Narrative_52_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_51_0.png)
 
 </div>
 </div>

@@ -320,7 +320,7 @@ plt.show()
 
 This isn't as intuitive. Lower starting velocity leads to faster serves. An important caveat here is that the angle is constant though. The lowest speed leads to the lowest trajectory, which again reduces the distance from the ball to the ground. With the result for changing angle and for changing velocity, it seems like the best strategy is reaching as low an angle as possible, and then finding the lowest possible speed for that angle.
 
-# Finding the fastest possible serve
+## Finding the fastest possible serve
 
 So far I have changed the velocity and angle seperately for a pretty average serve, to see what impact the changes make on the total time of the serve. However, to find the fastest possible serve I will need to find the combination of angle and velocity that results in the lowest possible time.
 
