@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - "/features/notebooks/volleyball-narrative"
-interact_link: content/features/notebooks/Volleyball-Narrative.ipynb
+interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\Jupyter-Book-Showroom\content\features/notebooks/Volleyball-Narrative.ipynb
 kernel_name: python3
 has_widgets: false
 title: 'Narrative-version'
@@ -216,7 +216,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball-Narrative_26_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball-Narrative_26_0.png)
 
 </div>
 </div>
@@ -267,7 +267,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball-Narrative_33_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball-Narrative_33_0.png)
 
 </div>
 </div>
@@ -316,7 +316,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball-Narrative_38_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball-Narrative_38_0.png)
 
 </div>
 </div>
@@ -393,7 +393,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball-Narrative_46_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball-Narrative_46_0.png)
 
 </div>
 </div>
@@ -454,7 +454,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball-Narrative_51_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball-Narrative_51_0.png)
 
 </div>
 </div>
