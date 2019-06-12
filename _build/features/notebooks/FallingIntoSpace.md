@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - "/features/notebooks/fallingintospace"
-interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\Jupyter-Book-Showroom\content\features/notebooks/FallingIntoSpace.ipynb
+interact_link: content/features/notebooks/FallingIntoSpace.ipynb
 kernel_name: python3
 has_widgets: false
 title: 'How long would it take to fall into space?'
@@ -223,7 +223,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/FallingIntoSpace_25_0.png)
+![png](../../images/features/notebooks/FallingIntoSpace_25_0.png)
 
 </div>
 </div>
@@ -352,7 +352,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/FallingIntoSpace_37_0.png)
+![png](../../images/features/notebooks/FallingIntoSpace_37_0.png)
 
 </div>
 </div>
@@ -399,7 +399,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/FallingIntoSpace_40_0.png)
+![png](../../images/features/notebooks/FallingIntoSpace_40_0.png)
 
 </div>
 </div>
