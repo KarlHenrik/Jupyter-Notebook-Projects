@@ -161,10 +161,10 @@ def USStdAtmos(Z): #Input is height in meters
         Tb = 214.65
         L = -2
         Pb = 3.9564 * 10**(-2)
-
+        
     if H < 84.8520:
         T = Tb + L * (H - Hb) #Temperature formula for the lower half of the model
-
+        
         g0s = 9.80665 #m^2/(s^2*m')
         Rs = 8.31432 * 10**(3) #Nm/(kmol*K)
         M0 = 28.9644 #kg/kmol
@@ -223,7 +223,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/FallingIntoSpace_25_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/FallingIntoSpace_25_0.png)
 
 </div>
 </div>
@@ -292,7 +292,7 @@ for i in range(n-1):
     acc[i] = acceleration(pos[i], vel[i], Cd, A, m)
     vel[i+1] = vel[i] + acc[i]*dt
     pos[i+1] = pos[i] + vel[i+1]*dt
-
+    
     velsq[i] = vel[i]**2
     dns[i] = USStdAtmos(pos[i])[2]
     drg[i] = drag(dns[i], vel[i], Cd, A)/m
@@ -352,7 +352,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/FallingIntoSpace_37_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/FallingIntoSpace_37_0.png)
 
 </div>
 </div>
@@ -399,7 +399,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/FallingIntoSpace_40_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/FallingIntoSpace_40_0.png)
 
 </div>
 </div>
