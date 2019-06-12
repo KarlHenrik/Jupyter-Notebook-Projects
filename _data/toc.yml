@@ -62,6 +62,6 @@
   url: /features/notebooks/Volleyball
   not_numbered: true
   expand_sections: true
-#  sections:
-#  - title: Narrative-version
-#    url: /features/notebooks/Volleyball-Narrative
+  sections:
+  - title: Narrative-version
+    url: /features/notebooks/Volleyball-Narrative
