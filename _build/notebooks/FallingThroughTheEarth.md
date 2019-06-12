@@ -1,16 +1,16 @@
 ---
 redirect_from:
-  - "/features/notebooks/fallingthroughtheearthwe"
-interact_link: content/features/notebooks/FallingThroughTheEarthWe.ipynb
+  - "/notebooks/fallingthroughtheearth"
+interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\Jupyter-Book-Showroom\content\notebooks/FallingThroughTheEarth.ipynb
 kernel_name: python3
 has_widgets: false
-title: 'We-version'
+title: 'How long would it take to fall through the Earth?'
 prev_page:
-  url: /features/notebooks/FallingThroughTheEarth
-  title: 'How long would it take to fall through the Earth?'
+  url: https://github.com/KarlHenrik/Jupyter-Book-Showroom
+  title: 'GitHub repository'
 next_page:
-  url: /features/notebooks/FallingIntoSpace
-  title: 'How long would it take to fall into space?'
+  url: /notebooks/FallingThroughTheEarth-Narrative
+  title: 'Narrative-version'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -69,7 +69,7 @@ import numpy.polynomial.polynomial as poly #Used later for finding a polynomial 
 
 </div>
 
-The Preliminary Reference Earth Model gives us the density of the Earth at different distances from the center. 
+The Preliminary Reference Earth Model gives us the density of the Earth at different distances from the center.
 
 The data can be found here: http://ds.iris.edu/ds/products/emc-prem/ at "Model Download". I use the file "PREM_ANISOTROPIC".
 
@@ -114,7 +114,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/FallingThroughTheEarthWe_21_0.png)
+![png](../../images/notebooks/FallingThroughTheEarth_21_0.png)
 
 </div>
 </div>
@@ -148,7 +148,7 @@ for i in range(1,len(radius)):
     shellMass = 4/3*pi*radius[i]**3*shellDensity - 4/3*pi*radius[i-1]**3*shellDensity
     #We add the next total mass to the list, adding the mass of the current shell with the previous total mass
     masses.append(shellMass + masses[i-1])
-    
+
 plt.plot(radius/1000,masses)
 plt.xlabel("Radius [km]")
 plt.ylabel("Mass [kg]")
@@ -162,7 +162,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/FallingThroughTheEarthWe_28_0.png)
+![png](../../images/notebooks/FallingThroughTheEarth_28_0.png)
 
 </div>
 </div>
@@ -249,7 +249,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/FallingThroughTheEarthWe_37_0.png)
+![png](../../images/notebooks/FallingThroughTheEarth_37_0.png)
 
 </div>
 </div>
@@ -285,7 +285,7 @@ def grav(r):
         for i in range(deg+1): #a0 + a1*r + a2*r**2 + a3*r**3
             sum += coefs1[i]*dist**(i)
         return(direc*sum)
-    
+
     else: #Function 2 for distances further out than the "spike"
         sum = 0
         for i in range(deg+1):
@@ -355,7 +355,7 @@ Total error = 1.0836096370860657
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/FallingThroughTheEarthWe_46_1.png)
+![png](../../images/notebooks/FallingThroughTheEarth_46_1.png)
 
 </div>
 </div>
@@ -384,7 +384,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/FallingThroughTheEarthWe_48_0.png)
+![png](../../images/notebooks/FallingThroughTheEarth_48_0.png)
 
 </div>
 </div>
@@ -483,7 +483,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/FallingThroughTheEarthWe_59_0.png)
+![png](../../images/notebooks/FallingThroughTheEarth_59_0.png)
 
 </div>
 </div>
@@ -561,7 +561,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/FallingThroughTheEarthWe_67_0.png)
+![png](../../images/notebooks/FallingThroughTheEarth_67_0.png)
 
 </div>
 </div>

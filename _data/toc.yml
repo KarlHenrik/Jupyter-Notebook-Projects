@@ -43,20 +43,25 @@
 #- header: Computational Narratives
 
 # A chapter w/ a collection of sections beneath it
-- header: Computational Narratives
+- header: Computational Essays
 
 - title: How long would it take to fall through the Earth?
-  url: /features/notebooks/FallingThroughTheEarth
+  url: /notebooks/FallingThroughTheEarth
   not_numbered: true
   expand_sections: true
   sections:
-  - title: We-version
-    url: /features/notebooks/FallingThroughTheEarthWe
+  - title: Narrative-version
+    url: /notebooks/FallingThroughTheEarth-Narrative
 
 - title: How long would it take to fall into space?
-  url: /features/notebooks/FallingIntoSpace
+  url: /notebooks/FallingIntoSpace
+  not_numbered: true
+  expand_sections: true
+
+- title: What is the fastest possible volleyball serve?
+  url: /notebooks/Volleyball
   not_numbered: true
   expand_sections: true
   sections:
-  - title: We-version
-    url: /features/notebooks/FallingIntoSpaceWe
+  - title: Narrative-version
+    url: /notebooks/Volleyball-Narrative

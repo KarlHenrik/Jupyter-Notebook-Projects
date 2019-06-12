@@ -1,16 +1,16 @@
 ---
 redirect_from:
-  - "/features/notebooks/fallingintospacewe"
-interact_link: content/features/notebooks/FallingIntoSpaceWe.ipynb
+  - "/notebooks/fallingintospace"
+interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\Jupyter-Book-Showroom\content\notebooks/FallingIntoSpace.ipynb
 kernel_name: python3
 has_widgets: false
-title: 'We-version'
+title: 'How long would it take to fall into space?'
 prev_page:
-  url: /features/notebooks/FallingIntoSpace
-  title: 'How long would it take to fall into space?'
+  url: /notebooks/FallingThroughTheEarth-Narrative
+  title: 'Narrative-version'
 next_page:
-  url: 
-  title: ''
+  url: /notebooks/Volleyball
+  title: 'What is the fastest possible volleyball serve?'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -32,7 +32,7 @@ Taken 12.February 1984 (from <a href="https://commons.wikimedia.org/wiki/File:As
 
 ## What does it mean to fall into space?
 
-We have a pretty good idea about what space is, it's everything outside the Earth. But where does Earth stop and space begin? The atmosphere disappears so gradually that there is no definitive anwser. An altitude of 100km above sea level is often used to mark the beginning of space for space, this limit is called the Kármán line. This is the height you will be falling to in this thought-experiment.
+We have a pretty good idea about what space is, it's everything outside the Earth. But where does Earth stop and space begin? The atmosphere disappears so gradually that there is no definitive anwser. An altitude of 100km above sea level is often used to mark the beginning of space for space, this limit is called the K�rm�n line. This is the height you will be falling to in this thought-experiment.
 
 So what does falling mean? In physics, something is in free fall when it is affected only by gravity. This means that the object could be moving in any direction, as long as there are no other forces acting on it. We will not be looking at this kind of fall. Instead of gravity, we will be looking at a kind of anti-gravity. Furthermore, it will not be the only force acting on the object, as we will include air resistance in our model.
 
@@ -113,7 +113,7 @@ To find the density at your current height in your fall, we will use the model f
 
 <img src="Resources/FallingIntoSpaceResources/SpaceView.jpg" alt="Drawing" style="width: 80%;"/>
 
-The Earth’s stratosphere using a high altitude weather balloon. (from <a href="https://commons.wikimedia.org/wiki/File:Curvature_of_the_Earth.png"> Wikimedia Commons</a>)
+The Earth�s stratosphere using a high altitude weather balloon. (from <a href="https://commons.wikimedia.org/wiki/File:Curvature_of_the_Earth.png"> Wikimedia Commons</a>)
 
 The US Standard Atmosphere splits the atmosphere into 12 layers, starting at 0m and going all the way to 100km. We will only find the density up to 86km, as the models after that point are more complex, and unnecesary for the purpose of this essay, given that the air resistance is effectively zero after that point.
 
@@ -161,10 +161,10 @@ def USStdAtmos(Z): #Input is height in meters
         Tb = 214.65
         L = -2
         Pb = 3.9564 * 10**(-2)
-        
+
     if H < 84.8520:
         T = Tb + L * (H - Hb) #Temperature formula for the lower half of the model
-        
+
         g0s = 9.80665 #m^2/(s^2*m')
         Rs = 8.31432 * 10**(3) #Nm/(kmol*K)
         M0 = 28.9644 #kg/kmol
@@ -223,7 +223,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/FallingIntoSpaceWe_25_0.png)
+![png](../../images/notebooks/FallingIntoSpace_25_0.png)
 
 </div>
 </div>
@@ -292,7 +292,7 @@ for i in range(n-1):
     acc[i] = acceleration(pos[i], vel[i], Cd, A, m)
     vel[i+1] = vel[i] + acc[i]*dt
     pos[i+1] = pos[i] + vel[i+1]*dt
-    
+
     velsq[i] = vel[i]**2
     dns[i] = USStdAtmos(pos[i])[2]
     drg[i] = drag(dns[i], vel[i], Cd, A)/m
@@ -352,7 +352,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/FallingIntoSpaceWe_37_0.png)
+![png](../../images/notebooks/FallingIntoSpace_37_0.png)
 
 </div>
 </div>
@@ -399,7 +399,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/FallingIntoSpaceWe_40_0.png)
+![png](../../images/notebooks/FallingIntoSpace_40_0.png)
 
 </div>
 </div>
