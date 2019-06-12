@@ -460,7 +460,7 @@ There it is, the fastest possible serve. Flying only centimetres over the net, a
 
 ## Sources and inspiration
 
-Optimizing a Volleyball Serve - Hope College Mathematics REU Summer ’06 - http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.176.6783&rep=rep1&type=pdf
+Optimizing a Volleyball Serve - Hope College Mathematics REU Summer 06 - http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.176.6783&rep=rep1&type=pdf
 
 The Magnus Effect - https://en.wikipedia.org/wiki/Magnus_effect
 
