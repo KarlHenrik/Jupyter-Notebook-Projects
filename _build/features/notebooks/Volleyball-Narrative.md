@@ -9,8 +9,8 @@ prev_page:
   url: /features/notebooks/Volleyball
   title: 'What is the fastest possible volleyball serve?'
 next_page:
-  url: /features/notebooks/InteractiveDemo
-  title: 'Interactivity Demo'
+  url: 
+  title: ''
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
