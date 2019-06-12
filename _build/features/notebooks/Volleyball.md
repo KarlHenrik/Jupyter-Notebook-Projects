@@ -154,12 +154,12 @@ def serve(startingVel, startingAng, n, dt):
     p = np.empty((num,2))
     p[:] = np.nan #Makes the position array empty so that the (0,0)-position donesn't show up on the plot
     p[0] = startingPos
-
+    
     for i in range(n):
         a = g + drag(v)/ballmass + spinDrag(v, angvel)/ballmass
         v = v + a*dt
         p[i+1] = p[i] + v*dt
-
+        
         distance = p[i+1][0]
         height = p[i+1][1]
         if (distance < outX and height < radius and distance > netX + 0.5):
@@ -212,7 +212,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_26_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball_26_0.png)
 
 </div>
 </div>
@@ -263,7 +263,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_33_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball_33_0.png)
 
 </div>
 </div>
@@ -312,7 +312,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_38_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball_38_0.png)
 
 </div>
 </div>
@@ -389,7 +389,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_46_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball_46_0.png)
 
 </div>
 </div>
@@ -450,7 +450,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_51_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Book-Showroom/_build/images/features/notebooks/Volleyball_51_0.png)
 
 </div>
 </div>
@@ -460,7 +460,7 @@ There it is, the fastest possible serve. Flying only centimetres over the net, a
 
 ## Sources and inspiration
 
-Optimizing a Volleyball Serve - Hope College Mathematics REU Summer ï¿½06 - http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.176.6783&rep=rep1&type=pdf
+Optimizing a Volleyball Serve - Hope College Mathematics REU Summer ’06 - http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.176.6783&rep=rep1&type=pdf
 
 The Magnus Effect - https://en.wikipedia.org/wiki/Magnus_effect
 

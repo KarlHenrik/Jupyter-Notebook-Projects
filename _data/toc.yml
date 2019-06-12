@@ -66,7 +66,7 @@
   - title: Narrative-version
     url: /features/notebooks/Volleyball-Narrative
 
-#- title: Interactive Demo
-#  url: /features/notebooks/InteractiveDemo
-#  not_numbered: true
-#  expand_sections: true
+- title: Interactive Demo
+  url: /features/notebooks/InteractiveDemo
+  not_numbered: true
+  expand_sections: true
