@@ -125,7 +125,7 @@ I'll need to put some constraints on the model, as I can't jump all the way to t
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-startingPos = [0, 2.5] #I hit the ball 0.5m into the court, at a height of 2.5m
+startingPos = [0, 2.5] #I hit the ball at a height of 2.5m
 angvel = 7*2*np.pi #7 revolutions/second, I have no idea what is realistic
 maxVel = 36 #m/s, close to the highest ever recorded
 maxAngle = np.pi/2 #pi/2 radians, 90 degrees

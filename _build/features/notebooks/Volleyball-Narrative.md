@@ -129,7 +129,7 @@ I'll need to put some constraints on the model, as I can't jump all the way to t
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-startingPos = [0.5, 2.5] #I hit the ball 0.5m into the court, at a height of 2.5m
+startingPos = [0, 2.5] #I hit the ball at a height of 2.5m
 angvel = 7*2*np.pi #7 revolutions/second, I have no idea what is realistic
 maxVel = 36 #m/s, close to the highest ever recorded
 maxAngle = np.pi/2 #pi/2 radians, 90 degrees
@@ -171,10 +171,10 @@ def serve(startingVel, startingAng, n, dt):
             return(p, i * dt)
         if (distance > outX or height < radius):
             #It's out or it hit the ground or my side
-            return(None, None)
+            return(p, None)
         if ((p[i][0] <= netX <= distance) and height < netheight + radius):
             #It's below the net
-            return(None, None)
+            return(p, None)
 ```
 </div>
 
@@ -185,7 +185,7 @@ def serve(startingVel, startingAng, n, dt):
 ```python
 num = 2000
 timestep = 0.001
-v0 = 16 #m/s
+v0 = 17 #m/s
 theta0 = 0.32 #starting angle in radians
 position = serve(v0, theta0, 2000, 0.001)[0]
 ```
@@ -198,10 +198,9 @@ position = serve(v0, theta0, 2000, 0.001)[0]
 ```python
 plt.figure(figsize=(8, 4))
 plt.plot(position[:, 0], position[:, 1] - radius, label="Ball trajectory")
-plt.xlim(0, outX + 1)
+plt.xlim(0, outX)
 plt.ylim(0, np.nanmax(position[:,1])+0.5)
 plt.plot([9,9],[0,netheight], label="The net")
-plt.plot([18,18],[0,1], label="The end of the court")
 plt.grid()
 plt.legend(loc="upper right")
 
@@ -240,7 +239,7 @@ thetime = np.empty(100)
 thetime[:] = np.nan
 n = 2000
 dt = 0.005
-constVel = 16
+constVel = 17
 
 for i in range(len(thetas)):
     theta = thetas[i]
@@ -256,7 +255,7 @@ for i in range(len(thetas)):
 plt.plot(thetas, thetime)
 plt.xlim(0,np.pi/2)
 plt.grid()
-plt.title("Time of serve with a starting velocity of 16m/s")
+plt.title("Time of serve with a starting velocity of 17m/s")
 plt.xlabel("Angle [radians]")
 plt.ylabel("Time [s]")
 plt.show()
@@ -274,6 +273,40 @@ plt.show()
 </div>
 
 It looks like my intuition was right, lower angle means shorter total time. I see that a small change in angle can mean a large change in total time, which means that optimizing the angle of the serve is very beneficial for getting faster serves.  But there is a limit to how low the ball can be served, I see that the graph cuts off at about 0.25 radians at the optimal time of about 1.1 seconds.
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+pos1, time1 = serve(constVel, 0.3, n, dt)
+pos2, time2 = serve(constVel, 0.7, n, dt)
+pos3, time3 = serve(constVel, 1.2, n, dt)
+
+plt.figure(figsize=(8, 4))
+plt.plot(pos1[:, 0], pos1[:, 1] - radius, label="0.3 radians. {:.2f} seconds".format(time1))
+plt.plot(pos2[:, 0], pos2[:, 1] - radius, label="0.7 radians. Out.")
+plt.plot(pos3[:, 0], pos3[:, 1] - radius, label="1.2 radians. {:.2f} seconds".format(time3))
+plt.xlim(0, outX)
+plt.ylim(0, np.nanmax(pos3[:,1])+0.5)
+plt.plot([9,9],[0,netheight], label="The net")
+plt.grid()
+plt.legend(loc="upper right")
+
+plt.title("Serves with different starting angles and a starting velocity of {:.2f} m/s".format(v0))
+plt.xlabel("Distance [m]")
+plt.ylabel("Height [m]")
+plt.show()
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+{:.output_png}
+![png](../../images/features/notebooks/Volleyball-Narrative_35_0.png)
+
+</div>
+</div>
+</div>
 
 The graph gets cut off in the middle, due to the ball flying too far. With very large angles, the ball starts landing inside the court again, though the serve becomes quite slow at that point.
 
@@ -316,13 +349,47 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball-Narrative_38_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_40_0.png)
 
 </div>
 </div>
 </div>
 
 This isn't as intuitive. Lower starting velocity leads to faster serves. An important caveat here is that the angle is constant though. The lowest speed leads to the lowest trajectory, which again reduces the distance from the ball to the ground. With the result for changing angle and for changing velocity, it seems like the best strategy is reaching as low an angle as possible, and then finding the lowest possible speed for that angle.
+
+<div markdown="1" class="cell code_cell">
+<div class="input_area" markdown="1">
+```python
+pos1, time1 = serve(13, constAngle, n, dt)
+pos2, time2 = serve(15, constAngle, n, dt)
+pos3, time3 = serve(18, constAngle, n, dt)
+
+plt.figure(figsize=(8, 4))
+plt.plot(pos1[:, 0], pos1[:, 1] - radius, label="13 m/s. Net.")
+plt.plot(pos2[:, 0], pos2[:, 1] - radius, label="15 m/s. {:.2f} seconds".format(time2))
+plt.plot(pos3[:, 0], pos3[:, 1] - radius, label="18 m/s. {:.2f} seconds".format(time3))
+plt.xlim(0, outX)
+plt.ylim(0, np.nanmax(pos3[:,1])+0.5)
+plt.plot([9,9],[0,netheight], label="The net")
+plt.grid()
+plt.legend(loc="upper right")
+
+plt.title("Serves with different starting velocities and a starting angle of {:.2f} radians".format(constAngle))
+plt.xlabel("Distance [m]")
+plt.ylabel("Height [m]")
+plt.show()
+```
+</div>
+
+<div class="output_wrapper" markdown="1">
+<div class="output_subarea" markdown="1">
+
+{:.output_png}
+![png](../../images/features/notebooks/Volleyball-Narrative_42_0.png)
+
+</div>
+</div>
+</div>
 
 ## Finding the fastest possible serve
 
@@ -393,7 +460,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball-Narrative_46_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_49_0.png)
 
 </div>
 </div>
@@ -413,8 +480,8 @@ and takes {:.2f} seconds.""".format(btheta, bvel, np.nanmin(time)))
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-The fastest possible serve has a starting angle of 0.12 radians, a starting velocity of 24.81 m/s,
-and takes 0.90 seconds.
+The fastest possible serve has a starting angle of 0.14 radians, a starting velocity of 23.49 m/s,
+and takes 0.95 seconds.
 ```
 </div>
 </div>
@@ -433,11 +500,10 @@ bpos = serve(bvel, btheta, n, dt)[0]
 
 plt.figure(figsize=(8, 4))
 plt.plot(bpos[:, 0], bpos[:, 1] - radius, label="Ball Trajectory")
-plt.xlim(0, 18 + 1)
+plt.xlim(0, outX)
 plt.ylim(0, np.nanmax(bpos[:,1])+0.5)
 
 plt.plot([9,9],[0,netheight], label="The net")
-plt.plot([18,18],[0,1], label="The end of the court")
 plt.grid()
 plt.legend(loc="upper right")
 
@@ -454,7 +520,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball-Narrative_51_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_54_0.png)
 
 </div>
 </div>
