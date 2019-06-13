@@ -1,22 +1,26 @@
 ---
 redirect_from:
-  - "/features/notebooks/volleyball"
-interact_link: content/features/notebooks/Volleyball.ipynb
+  - "/features/notebooks/volleyball-narrative"
+interact_link: content/features/notebooks/Volleyball-Narrative.ipynb
 kernel_name: python3
 has_widgets: false
-title: 'What is the fastest possible volleyball serve?'
+title: 'Narrative-version'
 prev_page:
-  url: /features/notebooks/FallingIntoSpace
-  title: 'How long would it take to fall into space?'
+  url: /features/notebooks/Volleyball
+  title: 'What is the fastest possible volleyball serve?'
 next_page:
-  url: /features/notebooks/Volleyball-Narrative
-  title: 'Narrative-version'
+  url: 
+  title: ''
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
 # What is the fastest possible volleyball serve?
 
-When I was in high school I really liked playing volleyball. Getting a good serve, smash or block is one of the best feelings there is in sports. Me and a friend used to practice serving after school, hitting the ball back and forth. His serves were always way better than mine, with more power and spin, I could never quite figure it out. But maybe I can now? By using my knowledge about physics and computatuion, can I find out what it takes to make the fastest possible serve? It's worth a shot.
+I started off by giving the ball a single bounce off the floor, then a small spin throw in my hands, getting a feel for the ball. I then hold it up straight in front of me in my left hand, with my right hand at eye-level as if pulling on a bow-string. I throw the ball straight up, and start accelerating my right hand, twisting my upper body for maximum velocity. My hand strikes the ball, producing a satisfying bang, sending the ball flying through the air. It flies majestically, spinning like a ballerina, morphing into a blue and yellow blur of exellence. Then it hits the net, becoming entagled in disaster. Their serve.
+
+Filip is given the ball. He goes through the same motions, he's the one I've been copying after all. But Mozart would always be the best at playing Mozart. He hits the ball at blistering speeds, I yell "Got it!", but I didn't have it. Not even in the slightest. It hits my forearm, then the floor. Then the shame hits, hurting far more.
+
+It's been a few years since I played volleyball with Filip, but I'd guess he's still way better than me. However, should we ever meet again on the court, I'd have computational physics on my side. That might not help at all, due to my lack of talent. But there's only one way to find out, by trying to find the fastest possible serve.
 
 To do the calculations I will use numpy. And to show my results I will use matplotlib.
 
@@ -125,7 +129,7 @@ I'll need to put some constraints on the model, as I can't jump all the way to t
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-startingPos = [0, 2.5] #I hit the ball 0.5m into the court, at a height of 2.5m
+startingPos = [0.5, 2.5] #I hit the ball 0.5m into the court, at a height of 2.5m
 angvel = 7*2*np.pi #7 revolutions/second, I have no idea what is realistic
 maxVel = 36 #m/s, close to the highest ever recorded
 maxAngle = np.pi/2 #pi/2 radians, 90 degrees
@@ -167,10 +171,10 @@ def serve(startingVel, startingAng, n, dt):
             return(p, i * dt)
         if (distance > outX or height < radius):
             #It's out or it hit the ground or my side
-            return(p, None)
+            return(None, None)
         if ((p[i][0] <= netX <= distance) and height < netheight + radius):
             #It's below the net
-            return(p, None)
+            return(None, None)
 ```
 </div>
 
@@ -181,7 +185,7 @@ def serve(startingVel, startingAng, n, dt):
 ```python
 num = 2000
 timestep = 0.001
-v0 = 17 #m/s
+v0 = 16 #m/s
 theta0 = 0.32 #starting angle in radians
 position = serve(v0, theta0, 2000, 0.001)[0]
 ```
@@ -194,9 +198,10 @@ position = serve(v0, theta0, 2000, 0.001)[0]
 ```python
 plt.figure(figsize=(8, 4))
 plt.plot(position[:, 0], position[:, 1] - radius, label="Ball trajectory")
-plt.xlim(0, outX)
+plt.xlim(0, outX + 1)
 plt.ylim(0, np.nanmax(position[:,1])+0.5)
 plt.plot([9,9],[0,netheight], label="The net")
+plt.plot([18,18],[0,1], label="The end of the court")
 plt.grid()
 plt.legend(loc="upper right")
 
@@ -211,7 +216,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_26_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_26_0.png)
 
 </div>
 </div>
@@ -235,7 +240,7 @@ thetime = np.empty(100)
 thetime[:] = np.nan
 n = 2000
 dt = 0.005
-constVel = 17
+constVel = 16
 
 for i in range(len(thetas)):
     theta = thetas[i]
@@ -251,7 +256,7 @@ for i in range(len(thetas)):
 plt.plot(thetas, thetime)
 plt.xlim(0,np.pi/2)
 plt.grid()
-plt.title("Time of serve with a starting velocity of 17m/s")
+plt.title("Time of serve with a starting velocity of 16m/s")
 plt.xlabel("Angle [radians]")
 plt.ylabel("Time [s]")
 plt.show()
@@ -262,47 +267,13 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_33_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_33_0.png)
 
 </div>
 </div>
 </div>
 
 It looks like my intuition was right, lower angle means shorter total time. I see that a small change in angle can mean a large change in total time, which means that optimizing the angle of the serve is very beneficial for getting faster serves.  But there is a limit to how low the ball can be served, I see that the graph cuts off at about 0.25 radians at the optimal time of about 1.1 seconds.
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-pos1, time1 = serve(constVel, 0.3, n, dt)
-pos2, time2 = serve(constVel, 0.7, n, dt)
-pos3, time3 = serve(constVel, 1.2, n, dt)
-
-plt.figure(figsize=(8, 4))
-plt.plot(pos1[:, 0], pos1[:, 1] - radius, label="0.3 radians. {:.2f} seconds".format(time1))
-plt.plot(pos2[:, 0], pos2[:, 1] - radius, label="0.7 radians. Out.")
-plt.plot(pos3[:, 0], pos3[:, 1] - radius, label="1.2 radians. {:.2f} seconds".format(time3))
-plt.xlim(0, outX)
-plt.ylim(0, np.nanmax(pos3[:,1])+0.5)
-plt.plot([9,9],[0,netheight], label="The net")
-plt.grid()
-plt.legend(loc="upper right")
-
-plt.title("Serves with different starting angles and a starting velocity of {:.2f} m/s".format(v0))
-plt.xlabel("Distance [m]")
-plt.ylabel("Height [m]")
-plt.show()
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-{:.output_png}
-![png](../../images/features/notebooks/Volleyball_35_0.png)
-
-</div>
-</div>
-</div>
 
 The graph gets cut off in the middle, due to the ball flying too far. With very large angles, the ball starts landing inside the court again, though the serve becomes quite slow at that point.
 
@@ -345,47 +316,13 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_40_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_38_0.png)
 
 </div>
 </div>
 </div>
 
 This isn't as intuitive. Lower starting velocity leads to faster serves. An important caveat here is that the angle is constant though. The lowest speed leads to the lowest trajectory, which again reduces the distance from the ball to the ground. With the result for changing angle and for changing velocity, it seems like the best strategy is reaching as low an angle as possible, and then finding the lowest possible speed for that angle.
-
-<div markdown="1" class="cell code_cell">
-<div class="input_area" markdown="1">
-```python
-pos1, time1 = serve(13, constAngle, n, dt)
-pos2, time2 = serve(15, constAngle, n, dt)
-pos3, time3 = serve(18, constAngle, n, dt)
-
-plt.figure(figsize=(8, 4))
-plt.plot(pos1[:, 0], pos1[:, 1] - radius, label="13 m/s. Net.")
-plt.plot(pos2[:, 0], pos2[:, 1] - radius, label="15 m/s. {:.2f} seconds".format(time2))
-plt.plot(pos3[:, 0], pos3[:, 1] - radius, label="18 m/s. {:.2f} seconds".format(time3))
-plt.xlim(0, outX)
-plt.ylim(0, np.nanmax(pos3[:,1])+0.5)
-plt.plot([9,9],[0,netheight], label="The net")
-plt.grid()
-plt.legend(loc="upper right")
-
-plt.title("Serves with different starting velocities and a starting angle of {:.2f} radians".format(constAngle))
-plt.xlabel("Distance [m]")
-plt.ylabel("Height [m]")
-plt.show()
-```
-</div>
-
-<div class="output_wrapper" markdown="1">
-<div class="output_subarea" markdown="1">
-
-{:.output_png}
-![png](../../images/features/notebooks/Volleyball_42_0.png)
-
-</div>
-</div>
-</div>
 
 ## Finding the fastest possible serve
 
@@ -456,7 +393,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_49_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_46_0.png)
 
 </div>
 </div>
@@ -476,8 +413,8 @@ and takes {:.2f} seconds.""".format(btheta, bvel, np.nanmin(time)))
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-The fastest possible serve has a starting angle of 0.14 radians, a starting velocity of 23.49 m/s,
-and takes 0.95 seconds.
+The fastest possible serve has a starting angle of 0.12 radians, a starting velocity of 24.81 m/s,
+and takes 0.90 seconds.
 ```
 </div>
 </div>
@@ -496,10 +433,11 @@ bpos = serve(bvel, btheta, n, dt)[0]
 
 plt.figure(figsize=(8, 4))
 plt.plot(bpos[:, 0], bpos[:, 1] - radius, label="Ball Trajectory")
-plt.xlim(0, outX)
+plt.xlim(0, 18 + 1)
 plt.ylim(0, np.nanmax(bpos[:,1])+0.5)
 
 plt.plot([9,9],[0,netheight], label="The net")
+plt.plot([18,18],[0,1], label="The end of the court")
 plt.grid()
 plt.legend(loc="upper right")
 
@@ -516,7 +454,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_54_0.png)
+![png](../../images/features/notebooks/Volleyball-Narrative_51_0.png)
 
 </div>
 </div>

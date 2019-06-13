@@ -6,11 +6,11 @@ kernel_name: python3
 has_widgets: false
 title: 'How long would it take to fall into space?'
 prev_page:
-  url: https://github.com/KarlHenrik/Jupyter-Book-Showroom
-  title: 'GitHub repository'
+  url: /features/notebooks/FallingThroughTheEarth-Narrative
+  title: 'Narrative-version'
 next_page:
-  url: 
-  title: ''
+  url: /features/notebooks/Volleyball
+  title: 'What is the fastest possible volleyball serve?'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
