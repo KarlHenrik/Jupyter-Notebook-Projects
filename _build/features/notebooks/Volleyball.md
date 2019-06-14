@@ -16,7 +16,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # What is the fastest possible volleyball serve?
 
-When I was in high school I really liked playing volleyball. Getting a good serve, smash or block is one of the best feelings there is in sports. Me and a friend used to practice serving after school, hitting the ball back and forth. His serves were always way better than mine, with more power and spin, I could never quite figure it out. But maybe I can now? By using my knowledge about physics and computatuion, can I find out what it takes to make the fastest possible serve? It's worth a shot.
+When I was in high school I really liked playing volleyball. Getting a good serve, smash or block always felt great. Me and a friend used to practice serving after school, hitting the ball back and forth. His serves were always way better than mine though, having much more power and spin, I could never quite figure it out. But maybe I can now? By using my knowledge about physics and computatuion, can I find out what it takes to make the fastest possible serve? It's worth a shot.
 
 To do the calculations I will use numpy. And to show my results I will use matplotlib.
 
@@ -32,9 +32,9 @@ import matplotlib.pyplot as plt
 
 ## The Rules
 
-When I say "the fastest possible serve", what I mean is the serve that takes the least amount of time to reach the opponents floor, to give my opponent the least amount of time possible to react to my serve.
+When I say "the fastest possible serve", what I mean is the serve that takes the least amount of time to reach the opponents floor, giving my opponent the smallest amount of time possible to react to my serve.
 
-Before I tackle the problem, I'll need to define some parameters as the court, net, ball and air will affect the serve. Information about the court, net and ball are given by the <a href="https://www.fivb.org/EN/Refereeing-Rules/documents/FIVB-Volleyball_Rules_2017-2020-EN-v06.pdf">FIVB</a>.
+Before I tackle the problem, I'll need to define some parameters, as the court, net, ball and air will affect the outcome of the serve. Information about the court, net and ball were taken from the <a href="https://www.fivb.org/EN/Refereeing-Rules/documents/FIVB-Volleyball_Rules_2017-2020-EN-v06.pdf">FIVB</a>.
 
 A volleyball court is 18m by 9m, and the net has a height of 2.43m, standing tall in the middle of the court. The ball weighs 270g, and has a radius of 10,5cm.
 
@@ -53,6 +53,8 @@ A = np.pi * radius**2 #Cross sectional area
 </div>
 
 ## The forces acting on the ball
+
+In order to find the fastest possible serve, I'll have to know how the ball moves through the air. The things that affect the movement of the ball are the initial conditions of the serve, and the forces acting on the ball. I'll define the forces first.
 
 ### Gravity
 
@@ -95,7 +97,7 @@ def drag(v):
 
 ### Spin - The Magnus Effect
 
-When the ball flies through the air, air is flowing past the ball. If the ball has top-spin, the top of the ball will move along the direction of the ball, pushing air in the direction opposite of the flow. This will make air accumulate at the top of the ball. On the bottom of the ball, the spinning of the ball will simply push the air in the same direction as the flow.
+When the ball flies through the air, air is flowing past the ball. If the ball has top-spin, the top of the ball will move along the direction the ball is moving, pushing air in the direction opposite of the flow. This will make air accumulate at the top of the ball. On the bottom of the ball, the spinning of the ball will simply push the air in the same direction as the flow.
 
 This means that air will accumulate at the top of the ball, but not at the bottom. This will result in a difference in pressure, which will push the ball downward.
 
@@ -120,61 +122,63 @@ def spinDrag(v, angvel):
 
 ## Server constants
 
-I'll need to put some constraints on the model, as I can't jump all the way to the net and smash the volleyball through Filip's face at the speed of light. The values I set as my limitations will be my guesses at what a professional volleyball player can acheive.
+I'll need to put some constraints on the model, as I can't jump all the way to the net and smash the volleyball through Filip's face at the speed of light. The spin I hit the ball with, and maximum velocity also need to be limited. The values I set as my limitations will be my guesses at what a professional volleyball player can acheive.
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
 startingPos = [0, 2.5] #I hit the ball at a height of 2.5m
 angvel = 7*2*np.pi #7 revolutions/second, I have no idea what is realistic
-maxVel = 36 #m/s, close to the highest ever recorded
+maxVel = 30 #m/s
 maxAngle = np.pi/2 #pi/2 radians, 90 degrees
 ```
 </div>
 
 </div>
 
-This leaves me with three values to find. Starting velocity, angle upward and angle to the left. Before I try to find the combination of these three values that give me the perfect serve, I will do the computation for a serve with some arbitrary values instead to see what happens.
+This leaves me with two values to optimze. Starting velocity and angle upward. The ball will be served straight forward, as I'll leave the effect of serving diagonally for another time. Before I try to find the combination of these two values that give me the perfect serve, I will do the computation for a serve with some arbitrary values instead to see what happens.
 
 ## Computing a serve
 
-First I define the number of loops and the time-step for the Euler-Cromer calculation.
-
-Here I define the starting velocity and angle as two arbitrary numbers that give me a good serve.
-
 Now I need to do two things: Calculate the movement of the ball, and find when the ball hits the ground, the net or goes out of bounds. Calculating the movement is done with the Euler-Cromer method.
 
-To make sure that the serve is valid, I will need to constantly check if the ball is where it should be. A serve is successful if it hits the ground behind the net. However, if it collides with the net, or is directly under the net during the serve, it is invalid. Hitting the ground too early or too late will also invalidate the serve.
+To make sure that the serve is valid, I will need to constantly check if the ball is where it should be. A serve is successful if it hits the ground behind the net. However, if it collides with the net, or is directly under the net during the serve, it is invalid. Hitting the ground on my side or outside the court will also invalidate the serve.
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
+#Takes initial conditions and parameters for the Euler-Cromer loop, and returns ball trajectory and serve time
 def serve(startingVel, startingAng, n, dt):
     v = np.array([startingVel*np.cos(startingAng), startingVel*np.sin(startingAng)])
     p = np.empty((num,2))
     p[:] = np.nan #Makes the position array empty so that the (0,0)-position donesn't show up on the plot
     p[0] = startingPos
     
+    #The Euler-Cromer loop
     for i in range(n):
         a = g + drag(v)/ballmass + spinDrag(v, angvel)/ballmass
         v = v + a*dt
         p[i+1] = p[i] + v*dt
         
+        #Checking if the ball is in a critical region
         distance = p[i+1][0]
         height = p[i+1][1]
         if (distance < outX and height < radius and distance > netX + 0.5):
-            #It hit the ground on the other side of the net
-            return(p, i * dt)
+            #It hit the ground on the other side of the net, a seccessful serve!
+            return(p, i * dt) #I return an array with every position the ball was at, and the time the serve took
         if (distance > outX or height < radius):
             #It's out or it hit the ground or my side
             return(p, None)
         if ((p[i][0] <= netX <= distance) and height < netheight + radius):
             #It's below the net
             return(p, None)
+    return(p, None) #In case the serve never lands
 ```
 </div>
 
 </div>
+
+First I define the number of loops and the time-step for the Euler-Cromer calculation. Here I define the starting velocity and angle as two arbitrary numbers that give me a decent serve.
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
@@ -278,9 +282,9 @@ pos2, time2 = serve(constVel, 0.7, n, dt)
 pos3, time3 = serve(constVel, 1.2, n, dt)
 
 plt.figure(figsize=(8, 4))
-plt.plot(pos1[:, 0], pos1[:, 1] - radius, label="0.3 radians. {:.2f} seconds".format(time1))
-plt.plot(pos2[:, 0], pos2[:, 1] - radius, label="0.7 radians. Out.")
-plt.plot(pos3[:, 0], pos3[:, 1] - radius, label="1.2 radians. {:.2f} seconds".format(time3))
+plt.plot(pos1[:, 0], pos1[:, 1] - radius, label="0.3 radians. {:.2f} seconds".format(time1 or 0))
+plt.plot(pos2[:, 0], pos2[:, 1] - radius, label="0.7 radians. {:.2f} seconds".format(time2 or 0))
+plt.plot(pos3[:, 0], pos3[:, 1] - radius, label="1.2 radians. {:.2f} seconds".format(time3 or 0))
 plt.xlim(0, outX)
 plt.ylim(0, np.nanmax(pos3[:,1])+0.5)
 plt.plot([9,9],[0,netheight], label="The net")
@@ -361,9 +365,9 @@ pos2, time2 = serve(15, constAngle, n, dt)
 pos3, time3 = serve(18, constAngle, n, dt)
 
 plt.figure(figsize=(8, 4))
-plt.plot(pos1[:, 0], pos1[:, 1] - radius, label="13 m/s. Net.")
-plt.plot(pos2[:, 0], pos2[:, 1] - radius, label="15 m/s. {:.2f} seconds".format(time2))
-plt.plot(pos3[:, 0], pos3[:, 1] - radius, label="18 m/s. {:.2f} seconds".format(time3))
+plt.plot(pos1[:, 0], pos1[:, 1] - radius, label="13 m/s. {:.2f} seconds".format(time1 or 0))
+plt.plot(pos2[:, 0], pos2[:, 1] - radius, label="15 m/s. {:.2f} seconds".format(time2 or 0))
+plt.plot(pos3[:, 0], pos3[:, 1] - radius, label="18 m/s. {:.2f} seconds".format(time3 or 0))
 plt.xlim(0, outX)
 plt.ylim(0, np.nanmax(pos3[:,1])+0.5)
 plt.plot([9,9],[0,netheight], label="The net")
@@ -396,8 +400,8 @@ To find the best possible combination I will calculate an entire array of possib
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-dim = 80
-velocities = np.linspace(10, maxVel,dim) #All of the velocities I will try out
+dim = 100
+velocities = np.linspace(10, 30,dim) #All of the velocities I will try out
 angles = np.linspace(0, np.pi/2, dim) #All of the angles I will try out
 
 time = np.empty((dim, dim)) #The time each valid serve takes
@@ -410,8 +414,8 @@ time[:] = np.nan
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-n = 200
-dt = 0.025
+n = 250
+dt = 0.02
 
 for j in range(len(velocities)):
     vel0 = velocities[j]
@@ -462,13 +466,13 @@ plt.show()
 </div>
 </div>
 
-Every possible serve exists on a band which curves from high angle and high velocity(grey area), around low velocity medium angle(pink area), and ends with a sharp point at low angle, high velocity(red area, yellow dot). The yellow dot represents the optimal serve. Around the optimal serve, there are so few possible serves that they don't show up on the plot at all. As one would expect, there is little room for error around the optimal serve, a slight change in velocity or angle, and the serve goes straight in the net or over the court.
+Every possible serve exists on a band which curves from high angle and high velocity(grey area), around low velocity medium angle(pink area), and ends with a sharp point at low angle, high velocity(red area, yellow dot). The yellow dot represents the optimal serve found. Around the optimal serve, there are so few possible serves that they don't show up on the plot at all. As one would expect, there is little room for error around the optimal serve, a slight change in velocity or angle, and the serve goes straight in the net or over the court.
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-print("""The fastest possible serve has a starting angle of {:.2f} radians, a starting velocity of {:.2f} m/s,
-and takes {:.2f} seconds.""".format(btheta, bvel, np.nanmin(time)))
+print("""The fastest possible serve has a starting angle of {:.3f} radians, a starting velocity of {:.3f} m/s,
+and takes {:.3f} seconds.""".format(btheta, bvel, np.nanmin(time)))
 ```
 </div>
 
@@ -476,8 +480,8 @@ and takes {:.2f} seconds.""".format(btheta, bvel, np.nanmin(time)))
 <div class="output_subarea" markdown="1">
 {:.output_stream}
 ```
-The fastest possible serve has a starting angle of 0.14 radians, a starting velocity of 23.49 m/s,
-and takes 0.95 seconds.
+The fastest possible serve has a starting angle of 0.111 radians, a starting velocity of 26.162 m/s,
+and takes 0.900 seconds.
 ```
 </div>
 </div>
@@ -487,26 +491,38 @@ and takes 0.95 seconds.
 
 With the best starting angle and velocity, I can plot the fastest possible serve.
 
+Note that what I have found so far is a very rough estimate. I have tried relatively few combinations of starting angles and velocities, and the Euler-Cromer loop had a very large timestep. By searching a more refined area, and by using a much smaller time step in the Euler-Cromer loop I found a much better candidate for the optimal serve. Note that what I lost in speed, I gained in accuracy. The rough estimate would not hold up in a more realistic calculation.
+
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-n = 200
-dt = 0.025
-bpos = serve(bvel, btheta, n, dt)[0]
+n = 250
+dt = 0.02
+bpos, btime = serve(bvel, btheta, n, dt)
+vbpos, vbtime = serve(26.31515, 0.101717, 2000, 0.0005)
 
-plt.figure(figsize=(8, 4))
-plt.plot(bpos[:, 0], bpos[:, 1] - radius, label="Ball Trajectory")
+plt.figure(figsize=(18, 4))
+plt.subplot(121)
+plt.plot(bpos[:, 0], bpos[:, 1] - radius, label="{:.3f} seconds".format(btime or 0))
 plt.xlim(0, outX)
 plt.ylim(0, np.nanmax(bpos[:,1])+0.5)
-
 plt.plot([9,9],[0,netheight], label="The net")
 plt.grid()
 plt.legend(loc="upper right")
-
-plt.title("A serve with a starting angle of {:.2f} radians and a starting velocity of {:.2f} m/s".format(theta0, v0))
+plt.title("Rough estimate of optimal serve: {:.3f} radians, {:.3f} m/s".format(btheta, bvel))
 plt.xlabel("Distance [m]")
 plt.ylabel("Height [m]")
-plt.show()
+
+plt.subplot(122)
+plt.plot(vbpos[:, 0], vbpos[:, 1] - radius, label="{:.3f} seconds".format(vbtime or 0))
+plt.xlim(0, outX)
+plt.ylim(0, np.nanmax(bpos[:,1])+0.5)
+plt.plot([9,9],[0,netheight], label="The net")
+plt.grid()
+plt.legend(loc="upper right")
+plt.title("A much more accurate optimal serve: {:.3f} radians, {:.3f} m/s".format(0.101717, 26.31515))
+plt.xlabel("Distance [m]")
+plt.ylabel("Height [m]")
 
 plt.show()
 ```
