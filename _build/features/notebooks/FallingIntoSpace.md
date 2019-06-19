@@ -24,7 +24,7 @@ What if gravity suddenly started pushing you into the sky, instead of toward the
 
 In this computational essay, we are going to look at how long it would take to reach space if Earth pushed you away instead of pulling you in. We will also look at how air resistance would slow you down, and how it would change as you move through the atmosphere.
 
-<img src="Resources/FallingIntoSpaceResources/Astronaut-in-space.jpg" alt="Drawing" style="width: 70%;"/>
+<img src="FallingIntoSpaceResources/Astronaut-in-space.jpg" alt="Drawing" style="width: 70%;"/>
 
 *At about 100 meters from the cargo bay of the space shuttle Challenger, Bruce McCandless II was further out than anyone had ever been before. Guided by a Manned Maneuvering Unit (MMU), astronaut McCandless, pictured above, was floating free in space. McCandless and fellow NASA astronaut Robert Stewart were the first to experience such an "untethered space walk" during Space Shuttle mission 41-B in 1984.*
 
@@ -52,7 +52,7 @@ import matplotlib.pyplot as plt #Matplotlib gives us access to plotting tools fo
 
 Gravity causes objects to attract. Gravity is what makes the Earth orbit the Sun and apples fall to the ground. To calculate the force of gravity between two objects we use the formula: $ F = \frac{GM_{1}M_{2}}{r^2} $, where $G$ is the gravitational constant, $M_1$ and $M_2$ are the masses of the objects, and $r$ is the distance between them. This gravitational force acts on both objects, and it always points from one object to the other, pulling them closer. The $r^2$ factor in the formula is essential to the behaviour of gravity, as it means that gravity is much weaker when things are futher apart.
 
-<img src="Resources/FallingIntoSpaceResources/AntiGravity.jpg" alt="Drawing" style="width: 70%;"/>
+<img src="FallingIntoSpaceResources/AntiGravity.jpg" alt="Drawing" style="width: 70%;"/>
 
 But what if gravity pointed the other way? What if gravity pushed things away from eachother? This is a very exiting question with many different avenues to explore(most of them ending with everyone dying), but it will not be the focus of this essay. Gravity will instead only push only you away from Earth.
 
@@ -111,7 +111,7 @@ Density, pressure, temperature and height are connected in complicated ways in t
 
 To find the density at your current height in your fall, we will use the model for density that the US Standard Atmosphere offers.
 
-<img src="Resources/FallingIntoSpaceResources/SpaceView.jpg" alt="Drawing" style="width: 80%;"/>
+<img src="FallingIntoSpaceResources/SpaceView.jpg" alt="Drawing" style="width: 80%;"/>
 
 The Earth's stratosphere using a high altitude weather balloon. (from <a href="https://commons.wikimedia.org/wiki/File:Curvature_of_the_Earth.png"> Wikimedia Commons</a>)
 
@@ -161,10 +161,10 @@ def USStdAtmos(Z): #Input is height in meters
         Tb = 214.65
         L = -2
         Pb = 3.9564 * 10**(-2)
-        
+
     if H < 84.8520:
         T = Tb + L * (H - Hb) #Temperature formula for the lower half of the model
-        
+
         g0s = 9.80665 #m^2/(s^2*m')
         Rs = 8.31432 * 10**(3) #Nm/(kmol*K)
         M0 = 28.9644 #kg/kmol
@@ -292,7 +292,7 @@ for i in range(n-1):
     acc[i] = acceleration(pos[i], vel[i], Cd, A, m)
     vel[i+1] = vel[i] + acc[i]*dt
     pos[i+1] = pos[i] + vel[i+1]*dt
-    
+
     velsq[i] = vel[i]**2
     dns[i] = USStdAtmos(pos[i])[2]
     drg[i] = drag(dns[i], vel[i], Cd, A)/m

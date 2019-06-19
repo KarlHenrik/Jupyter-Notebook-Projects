@@ -24,7 +24,7 @@ What would happen if the ground under you disappeared and you fell all the way t
 
 In this computational essay, we are going to look your movement as you fall under the influence of the Earth's gravity without being stopped by the ground. We will look at how position, velocity and acceleration changes during the fall, and use these findings to better understand the movement.
 
-<img src="Resources/FallingThroughTheEarthResources/KolaBorehole.jpg" alt="Drawing" style="width: 60%;"/>
+<img src="FallingThroughTheEarthResources/KolaBorehole.jpg" alt="Drawing" style="width: 60%;"/>
 
 *The Kola Borehole (From <a href="http://www.absolute-knowledge.com/unexpected-discoveries-kola-superdeep-borehole/">absolute-knowledge.com</a>)*
 
@@ -46,7 +46,7 @@ The aforementioned factors lead to some questions and calculations beyond the sc
 
 This means that we do not have to calculate the gravitational pull from all throughout the Earth, since we can act as if all of the Earth's mass is located in its center. We also only need to worry about the what is further in than the point you are currently at.
 
-<img src="Resources/FallingThroughTheEarthResources/ShellTheoremWe.jpg" alt="Drawing" style="width: 70%;"/>
+<img src="FallingThroughTheEarthResources/ShellTheoremWe.jpg" alt="Drawing" style="width: 70%;"/>
 
 The gravitational force between two objects is given by $F = \frac{GMm}{r^2}$
 
@@ -69,7 +69,7 @@ import numpy.polynomial.polynomial as poly #Used later for finding a polynomial 
 
 </div>
 
-The Preliminary Reference Earth Model gives us the density of the Earth at different distances from the center. 
+The Preliminary Reference Earth Model gives us the density of the Earth at different distances from the center.
 
 The data can be found here: http://ds.iris.edu/ds/products/emc-prem/ at "Model Download". I use the file "PREM_ANISOTROPIC".
 
@@ -82,7 +82,7 @@ radius = []
 density = []
 
 #The file has 199 lines starting with "[Radius] [Density]" that we read like this
-infile = open("Resources/FallingThroughTheEarthResources/PREM_ANISOTROPIC.txt","r")
+infile = open("FallingThroughTheEarthResources/PREM_ANISOTROPIC.txt","r")
 lines = infile.readlines()
 for line in lines[3:]: #The data starts at line 3.
     numbers = line.split()
@@ -122,7 +122,7 @@ plt.show()
 
 *This image (taken from <a href="https://en.wikipedia.org/wiki/Structure_of_the_Earth">en.wikipedia.org/wiki/Structure_of_the_Earth</a>) shows how the different layers and densities of the earth fit together.*
 
-<img src="Resources/FallingThroughTheEarthResources/RadialDensityPREM.jpg" alt="Drawing" style="width: 70%;"/>
+<img src="FallingThroughTheEarthResources/RadialDensityPREM.jpg" alt="Drawing" style="width: 70%;"/>
 
 ### Mass at different heights
 
@@ -148,7 +148,7 @@ for i in range(1,len(radius)):
     shellMass = 4/3*pi*radius[i]**3*shellDensity - 4/3*pi*radius[i-1]**3*shellDensity
     #We add the next total mass to the list, adding the mass of the current shell with the previous total mass
     masses.append(shellMass + masses[i-1])
-    
+
 plt.plot(radius/1000,masses)
 plt.xlabel("Radius [km]")
 plt.ylabel("Mass [kg]")
@@ -285,7 +285,7 @@ def grav(r):
         for i in range(deg+1): #a0 + a1*r + a2*r**2 + a3*r**3
             sum += coefs1[i]*dist**(i)
         return(direc*sum)
-    
+
     else: #Function 2 for distances further out than the "spike"
         sum = 0
         for i in range(deg+1):
