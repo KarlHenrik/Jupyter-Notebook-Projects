@@ -32,6 +32,12 @@
   external: true
   not_numbered: true
 
+- title: CCSE Showroom
+  url: https://uio-ccse.github.io/computational-essay-showroom/index.html
+  external: true
+  not_numbered: true
+
+
 # Adds a searchbar link
 - title: Search
   search: true
