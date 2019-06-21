@@ -24,7 +24,7 @@ What would happen if the ground under you disappeared and you fell all the way t
 
 In this computational essay, we are going to look your movement as you fall under the influence of the Earth's gravity without being stopped by the ground. We will look at how position, velocity and acceleration changes during the fall, and use these findings to better understand the movement.
 
-<img src="FallingThroughTheEarthResources/KolaBorehole.jpg" alt="Drawing" style="width: 60%;"/>
+<img src="Resources/FallingThroughTheEarthResources/KolaBorehole.jpg" alt="Drawing" style="width: 60%;"/>
 
 *The Kola Borehole (From <a href="http://www.absolute-knowledge.com/unexpected-discoveries-kola-superdeep-borehole/">absolute-knowledge.com</a>)*
 
@@ -46,7 +46,7 @@ The aforementioned factors lead to some questions and calculations beyond the sc
 
 This means that we do not have to calculate the gravitational pull from all throughout the Earth, since we can act as if all of the Earth's mass is located in its center. We also only need to worry about the what is further in than the point you are currently at.
 
-<img src="FallingThroughTheEarthResources/ShellTheoremWe.jpg" alt="Drawing" style="width: 70%;"/>
+<img src="Resources/FallingThroughTheEarthResources/ShellTheoremWe.jpg" alt="Drawing" style="width: 70%;"/>
 
 The gravitational force between two objects is given by $F = \frac{GMm}{r^2}$
 
@@ -69,7 +69,7 @@ import numpy.polynomial.polynomial as poly #Used later for finding a polynomial 
 
 </div>
 
-The Preliminary Reference Earth Model gives us the density of the Earth at different distances from the center.
+The Preliminary Reference Earth Model gives us the density of the Earth at different distances from the center. 
 
 The data can be found here: http://ds.iris.edu/ds/products/emc-prem/ at "Model Download". I use the file "PREM_ANISOTROPIC".
 
@@ -82,7 +82,7 @@ radius = []
 density = []
 
 #The file has 199 lines starting with "[Radius] [Density]" that we read like this
-infile = open("FallingThroughTheEarthResources/PREM_ANISOTROPIC.txt","r")
+infile = open("Resources/FallingThroughTheEarthResources/PREM_ANISOTROPIC.txt","r")
 lines = infile.readlines()
 for line in lines[3:]: #The data starts at line 3.
     numbers = line.split()
@@ -122,7 +122,7 @@ plt.show()
 
 *This image (taken from <a href="https://en.wikipedia.org/wiki/Structure_of_the_Earth">en.wikipedia.org/wiki/Structure_of_the_Earth</a>) shows how the different layers and densities of the earth fit together.*
 
-<img src="FallingThroughTheEarthResources/RadialDensityPREM.jpg" alt="Drawing" style="width: 70%;"/>
+<img src="Resources/FallingThroughTheEarthResources/RadialDensityPREM.jpg" alt="Drawing" style="width: 70%;"/>
 
 ### Mass at different heights
 
@@ -148,7 +148,7 @@ for i in range(1,len(radius)):
     shellMass = 4/3*pi*radius[i]**3*shellDensity - 4/3*pi*radius[i-1]**3*shellDensity
     #We add the next total mass to the list, adding the mass of the current shell with the previous total mass
     masses.append(shellMass + masses[i-1])
-
+    
 plt.plot(radius/1000,masses)
 plt.xlabel("Radius [km]")
 plt.ylabel("Mass [kg]")
@@ -285,7 +285,7 @@ def grav(r):
         for i in range(deg+1): #a0 + a1*r + a2*r**2 + a3*r**3
             sum += coefs1[i]*dist**(i)
         return(direc*sum)
-
+    
     else: #Function 2 for distances further out than the "spike"
         sum = 0
         for i in range(deg+1):
@@ -571,7 +571,7 @@ We see that when we reach the center (position=0), acceleration is also 0. This 
 
 We saw earlier that gravity is almost constant close to the surface, which can also be seen here. This near constant gravity near the surface is what makes our velocity change so linearly between the sharper turns.
 
-### Summary and Conclustion
+## Summary and Conclustion
 
 Using our model of a perfectly spherical Earth with a density given by the Preliminary Reference Earth Model, with no air resistance and no rotation we found that we would fall through the entire Earth in 38 minutes and 10 seconds, reaching a top speed of 9,920 m/s along the way.
 
@@ -579,7 +579,7 @@ We saw that we would fall back and forth, reaching the same height each time. Ou
 
 These are, of course, estimates. A more accurate picture of a fall through the Earth could include a more accurate density model, air resistance, the coriolis effect or an earth that is not perfectly spherical. Even though you will probably not be falling through the Earth at any time soon, these calculations can be useful in other places. If one wanted to fly a spacecraft into a gaseous planet, one would have to look at how it would fall under the variable gravity while moving through the gases. One might even want to dig through other celestial objects, like moons or asteroids, where these kinds of calculations could be useful.
 
-### Sources and Inspiration
+## References, Sources, and Inspiration
 
 Preliminary Reference Earth Model - http://ds.iris.edu/ds/products/emc-prem/
 

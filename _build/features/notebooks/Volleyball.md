@@ -16,7 +16,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # What is the fastest possible volleyball serve?
 
-When I was in high school I really liked playing volleyball. Getting a good serve, smash or block always felt great. Me and a friend used to practice serving after school, hitting the ball back and forth. His serves were always way better than mine though, having much more power and spin, I could never quite figure it out. But maybe I can now? By using my knowledge about physics and computatuion, can I find out what it takes to make the fastest possible serve? It's worth a shot.
+When I was in high school I really liked playing volleyball. Getting a good serve, spike or block always felt great. Me and my friend Filip used to practice serving after school, hitting the ball back and forth. But his serves were always way better than mine, having much more power and spin. On the court his serves were an absolute pain to return, while mine were just decent. I could never quite figure it out. But maybe I can now? By using my knowledge about physics and computation, can I find out what it takes to make the fastest possible serve? It's worth a shot.
 
 To do the calculations I will use numpy. And to show my results I will use matplotlib.
 
@@ -30,9 +30,11 @@ import matplotlib.pyplot as plt
 
 </div>
 
-## The Rules
+## The rules
 
-When I say "the fastest possible serve", what I mean is the serve that takes the least amount of time to reach the opponents floor, giving my opponent the smallest amount of time possible to react to my serve.
+In volleyball, the goal is to make the ball hit the floor on your opponents side of the net. The strategy then, is to make it as hard as possible for the opponent to catch the ball, often by setting up for a spike by the net after your team catches the ball. To get the ball into play, you serve the ball from behind the court, over to your opponents side, where they try to catch it. It is beneficial to also make their initial catch of the ball as difficult as possible, either by making the serve fast or unpredictable.
+
+When I say "the fastest possible serve", what I mean is the serve that spends the least amount of time in the air before hitting the opponents floor, giving my opponents the smallest amount of time possible to react to my serve.
 
 Before I tackle the problem, I'll need to define some parameters, as the court, net, ball and air will affect the outcome of the serve. Information about the court, net and ball were taken from the <a href="https://www.fivb.org/EN/Refereeing-Rules/documents/FIVB-Volleyball_Rules_2017-2020-EN-v06.pdf">FIVB</a>.
 
@@ -52,6 +54,10 @@ A = np.pi * radius**2 #Cross sectional area
 
 </div>
 
+<img src="Resources/VolleyballResources/Overview.jpg" alt="Drawing" style="width: 50%;"/>
+
+Womens volleyball semifinals - Source: <a href="https://www.flickr.com/photos/paulsimpson1976/7748398084/in/photostream/">Paul Simpsons</a>.
+
 ## The forces acting on the ball
 
 In order to find the fastest possible serve, I'll have to know how the ball moves through the air. The things that affect the movement of the ball are the initial conditions of the serve, and the forces acting on the ball. I'll define the forces first.
@@ -67,13 +73,13 @@ This means that gravity will constantly give an acceleration of $g = 9.81 m/s^2$
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-g = [0, -9.81]
+g = [0, -9.81] #I'm calculationg the movement of the ball in two dimentions, and gravity only works in the vertical direction
 ```
 </div>
 
 </div>
 
-### Air Resistance
+### Air resistance
 
 When the ball moves through the air, it has to move away the air in front of it. When the ball pushes away the air, the air pushes the ball back, slowing the ball down. How much the ball is pushed back relies on the velocity of the ball, the size of the ball, the density of the air and something called the drag coefficient of the ball. The drag coefficient of objects is normally found experimentally. I will be using the drag coefficient found by the brilliant people at <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.176.6783&rep=rep1&type=pdf">Hope College</a> when solving a similar problem to mine.
 
@@ -101,6 +107,8 @@ When the ball flies through the air, air is flowing past the ball. If the ball h
 
 This means that air will accumulate at the top of the ball, but not at the bottom. This will result in a difference in pressure, which will push the ball downward.
 
+<img src="Resources/VolleyballResources/MagnusEffect.jpg" alt="Drawing" style="width: 50%;"/>
+
 This downward force due to spin will be beneficial to my perfect serve, as it will make the ball move faster toward the ground. This force due to spin relies on the angular velocity, velocity, cross-sectional area and radius of the ball, as well as something called the spin coefficient. Again, this value is normally found experimentally, and I will again use the results found by Hope College for my calculation.
 
 The force due to spin is perpendicular to the velocity of the ball, and is given by:
@@ -122,13 +130,13 @@ def spinDrag(v, angvel):
 
 ## Server constants
 
-I'll need to put some constraints on the model, as I can't jump all the way to the net and smash the volleyball through Filip's face at the speed of light. The spin I hit the ball with, and maximum velocity also need to be limited. The values I set as my limitations will be my guesses at what a professional volleyball player can acheive.
+I'll need to put some constraints on the model, as I can't jump all the way to the net and smash the volleyball through Filip's face at the speed of light. The spin I hit the ball with, and maximum velocity also need to be limited. The values I set as my limitations will be my guesses at what a professional volleyball player can achieve.
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
 startingPos = [0, 2.5] #I hit the ball at a height of 2.5m
-angvel = 7*2*np.pi #7 revolutions/second, I have no idea what is realistic
+angvel = 7*2*np.pi #7 revolutions/second, this is quite exaggerated, though I have no idea what is realistic
 maxVel = 30 #m/s
 maxAngle = np.pi/2 #pi/2 radians, 90 degrees
 ```
@@ -136,13 +144,17 @@ maxAngle = np.pi/2 #pi/2 radians, 90 degrees
 
 </div>
 
-This leaves me with two values to optimze. Starting velocity and angle upward. The ball will be served straight forward, as I'll leave the effect of serving diagonally for another time. Before I try to find the combination of these two values that give me the perfect serve, I will do the computation for a serve with some arbitrary values instead to see what happens.
+The ball will be served straight forward, along the edge of the court, meaning I will not look into the effect of serving diagonally. This is a big simplification, making the solving of the problem much easier to visualize.
+
+This leaves me with two values to optimize: Starting velocity and angle upward. Before I try to find the combination of these two values that give me the fastest serve, I will make a function that takes a starting velocity and angle as parameters, and then computes the serve.
 
 ## Computing a serve
 
-Now I need to do two things: Calculate the movement of the ball, and find when the ball hits the ground, the net or goes out of bounds. Calculating the movement is done with the Euler-Cromer method.
+The function needs to do two things: Calculate the movement of the ball, and find when the ball hits the ground, the net or goes out of bounds. Calculating the movement is done with the Euler-Cromer method.
 
-To make sure that the serve is valid, I will need to constantly check if the ball is where it should be. A serve is successful if it hits the ground behind the net. However, if it collides with the net, or is directly under the net during the serve, it is invalid. Hitting the ground on my side or outside the court will also invalidate the serve.
+For every time step in the Euler-Cromer method, it will do a series of checks to find when the serve is successful or invalid:
+
+A serve is successful if it hits the ground in bounds behind the net. However, if it collides with the net, or goes directly under the net during the serve, it is invalid. Hitting the ground on my side of the net or outside the court will also invalidate the serve.
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
@@ -167,7 +179,7 @@ def serve(startingVel, startingAng, n, dt):
             #It hit the ground on the other side of the net, a seccessful serve!
             return(p, i * dt) #I return an array with every position the ball was at, and the time the serve took
         if (distance > outX or height < radius):
-            #It's out or it hit the ground or my side
+            #It's out of bounds or it hit the ground on my side of the net
             return(p, None)
         if ((p[i][0] <= netX <= distance) and height < netheight + radius):
             #It's below the net
@@ -178,7 +190,13 @@ def serve(startingVel, startingAng, n, dt):
 
 </div>
 
-First I define the number of loops and the time-step for the Euler-Cromer calculation. Here I define the starting velocity and angle as two arbitrary numbers that give me a decent serve.
+Note that the function return the trajectory of the ball, along with the time of the serve if it was successful.
+
+### Test run
+
+Before I try to find the optimal velocity and starting angle, I will compute an average serve as a starting off point for further analysis.
+
+First I define the number of iterations and the time-step for the Euler-Cromer calculation. Then I define the starting velocity and angle, and finally I call my function to compute the serve.
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
@@ -187,19 +205,21 @@ num = 2000
 timestep = 0.001
 v0 = 17 #m/s
 theta0 = 0.32 #starting angle in radians
-position = serve(v0, theta0, 2000, 0.001)[0]
+examplePosition, exampleTime = serve(v0, theta0, 2000, 0.001)
 ```
 </div>
 
 </div>
 
+Plotting the example serve:
+
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
 plt.figure(figsize=(8, 4))
-plt.plot(position[:, 0], position[:, 1] - radius, label="Ball trajectory")
+plt.plot(examplePosition[:, 0], examplePosition[:, 1] - radius, label="Ball trajectory, {:.2f} seconds".format(exampleTime or 0))
 plt.xlim(0, outX)
-plt.ylim(0, np.nanmax(position[:,1])+0.5)
+plt.ylim(0, np.nanmax(examplePosition[:,1])+0.5)
 plt.plot([9,9],[0,netheight], label="The net")
 plt.grid()
 plt.legend(loc="upper right")
@@ -215,13 +235,13 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_26_0.png)
+![png](../../images/features/notebooks/Volleyball_31_0.png)
 
 </div>
 </div>
 </div>
 
-Now that I have the tools to simulate a serve and see if it was valid, it's time to see how the starting speed and angle affect the trajectory.
+Now that I have the tools to simulate a serve and see if it was valid, it's time to see how the starting speed and angle affect the trajectory an total airtime.
 
 ## Finding the effect of changing speed and angle
 
@@ -229,7 +249,7 @@ I'll use my example serve as a starting off point and see what happens if I chan
 
 ### Changing angle
 
-My intuition tells me that I'll want to go for as low an angle as possible, as that will make the arch of the ball lower, and therefore make the journey from the air to the ground as short as possible. By keeping the velocity steady at 16m/s and calculationg the time it would take for a serve at any angle between 0 and $\pi$/2 radians (0 and 90 degrees) I can see what difference changing the angle makes to the total time of the serve.
+My intuition tells me that I'll want to go for as low an angle as possible, as that will make the arch of the ball lower, and therefore make the journey from the air to the ground as short as possible. By keeping the velocity steady at 16m/s and calculating the time it would take for a serve at any angle between 0 and $\pi$/2 radians (0 and 90 degrees) I can see what difference changing the angle makes to the total time of the serve.
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
@@ -266,13 +286,13 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_33_0.png)
+![png](../../images/features/notebooks/Volleyball_38_0.png)
 
 </div>
 </div>
 </div>
 
-It looks like my intuition was right, lower angle means shorter total time. I see that a small change in angle can mean a large change in total time, which means that optimizing the angle of the serve is very beneficial for getting faster serves.  But there is a limit to how low the ball can be served, I see that the graph cuts off at about 0.25 radians at the optimal time of about 1.1 seconds.
+It looks like my intuition was right, lower angle means shorter total time. I see that a small change in angle can mean a large change in total time, which means that optimizing the angle of the serve is very beneficial for getting faster serves.  But there is a limit to how low the ball can be served, I see that the graph cuts off at about 0.25 radians at the optimal time of about 1.1 seconds. The gap in the middle of the graph is due to the ball flying too far. The serves with low angles are close to the net and hit the ground with a high horizontal velocity, while the serves with high angles fly far above the net and don't go as far horizontally as a result. Between these extremes are serves that are more optimized for distance, and thus fly out of bounds.
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
@@ -302,17 +322,17 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_35_0.png)
+![png](../../images/features/notebooks/Volleyball_40_0.png)
 
 </div>
 </div>
 </div>
 
-The graph gets cut off in the middle, due to the ball flying too far. With very large angles, the ball starts landing inside the court again, though the serve becomes quite slow at that point.
+It is obvious that serving with a low angle is the optimal strategy. High angled serves are much easier to catch due to the increased time to react, but also due to the ball coming in at an angle which is much easier to pass to the setter with a high angle.
 
 ### Changing velocity
 
-To see how velocity changes the total time, I'll do the same as with the angles. With a constant angle og 0.32 radians I will calculate the time it takes for a serve at any velocity between 10 and 36m/s(the maximum velocity).
+To see how velocity changes the total time, I'll do the same as with the angles. With a constant angle of 0.32 radians I will calculate the time it takes for a serve at any velocity between 10 and 30m/s (the maximum velocity).
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
@@ -349,13 +369,13 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_40_0.png)
+![png](../../images/features/notebooks/Volleyball_45_0.png)
 
 </div>
 </div>
 </div>
 
-This isn't as intuitive. Lower starting velocity leads to faster serves. An important caveat here is that the angle is constant though. The lowest speed leads to the lowest trajectory, which again reduces the distance from the ball to the ground. With the result for changing angle and for changing velocity, it seems like the best strategy is reaching as low an angle as possible, and then finding the lowest possible speed for that angle.
+This isn't as intuitive. Lower starting velocity leads to faster serves. An important caveat here is that the angle is constant. The lowest speed leads to the lowest trajectory, which again reduces the distance from the ball to the ground. With the results for changing the angle and for changing the velocity, it seems like the best strategy is reaching as low an angle as possible, and then finding the lowest possible speed for that angle.
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
@@ -385,7 +405,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_42_0.png)
+![png](../../images/features/notebooks/Volleyball_47_0.png)
 
 </div>
 </div>
@@ -393,14 +413,16 @@ plt.show()
 
 ## Finding the fastest possible serve
 
-So far I have changed the velocity and angle seperately for a pretty average serve, to see what impact the changes make on the total time of the serve. However, to find the fastest possible serve I will need to find the combination of angle and velocity that results in the lowest possible time.
+So far I have changed the velocity and angle separately for a pretty average serve, to see what impact the changes make on the total airtime of the serve. However, to find the fastest possible serve I will need to find the combination of angle and velocity that results in the lowest possible time.
 
-To find the best possible combination I will calculate an entire array of possible combinations and then find the fastest. There are more sophisticated methods to optimize two variable funcions, but the brute force method will suffice here.
+To find the best possible combination I will calculate an entire array of possible combinations and then find the fastest. There are more sophisticated methods to optimize two variable functions, but a brute force method will be used here due to the function not being very smooth.
+
+I will try out 100 different angles and 100 different velocities. Totaling 10000 combination of angles and velocity, that is 10000 serves to calculate. To reduce the time of the calculation I will use a pretty big time-step in the Euler-Cromer loop. This results in a pretty rough estimation though. Greater accuracy can be achieved by trying more combinations in a smaller area with a more accurate Euler-Cromer calculation (which I will do later).
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
 ```python
-dim = 100
+dim = 100 #Number of values to try
 velocities = np.linspace(10, 30,dim) #All of the velocities I will try out
 angles = np.linspace(0, np.pi/2, dim) #All of the angles I will try out
 
@@ -429,7 +451,7 @@ for j in range(len(velocities)):
 
 ### The perfect combination of angle and velocity
 
-With the calculation of the serves belonging to many combinations of velocity and angles complete, all that's left to do is analyze the results and find the perfect combination.
+With the calculation of 10000 different serves complete, all that's left to do is analyze the results and find the perfect combination.
 
 First I'll make a contour plot of the combinations and complementary times to show how angle and velocity change the total time of the serve, as well as to show what combinations result in a successful serve.
 
@@ -460,13 +482,13 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_49_0.png)
+![png](../../images/features/notebooks/Volleyball_54_0.png)
 
 </div>
 </div>
 </div>
 
-Every possible serve exists on a band which curves from high angle and high velocity(grey area), around low velocity medium angle(pink area), and ends with a sharp point at low angle, high velocity(red area, yellow dot). The yellow dot represents the optimal serve found. Around the optimal serve, there are so few possible serves that they don't show up on the plot at all. As one would expect, there is little room for error around the optimal serve, a slight change in velocity or angle, and the serve goes straight in the net or over the court.
+Every possible serve exists on a band which curves from high angle and high velocity(grey area), around low velocity medium angle(pink area), and ends with a sharp point at low angle, high velocity(red area, yellow dot). The yellow dot represents the optimal serve found. Around the optimal serve, there are so few possible serves that they don't show up on the plot at all. As one would expect, there is little room for error around the optimal serve, a slight change in velocity or angle, and the serve goes straight into the net or over the court.
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
@@ -487,11 +509,11 @@ and takes 0.900 seconds.
 </div>
 </div>
 
-### The Fastest Possible Serve
+### The fastest possible serve
 
-With the best starting angle and velocity, I can plot the fastest possible serve.
+By doing the calculation over a much smaller area, and with a much more accurate Euler-Cromer calculation, I found a slightly different fastest serve. This much more accurate calculation resulted in a serve which is slightly slower than the one found with the rough approximation. The different levels of accuracy resulted in different limits of what was possible. Although better accuracy didn't result in a faster serve, it resulted in a more realistic fastest serve, which is much more valuable.
 
-Note that what I have found so far is a very rough estimate. I have tried relatively few combinations of starting angles and velocities, and the Euler-Cromer loop had a very large timestep. By searching a more refined area, and by using a much smaller time step in the Euler-Cromer loop I found a much better candidate for the optimal serve. Note that what I lost in speed, I gained in accuracy. The rough estimate would not hold up in a more realistic calculation.
+With the best starting angle and velocity found, I can plot the trajectory of the fastest possible serve!
 
 <div markdown="1" class="cell code_cell">
 <div class="input_area" markdown="1">
@@ -532,13 +554,16 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_54_0.png)
+![png](../../images/features/notebooks/Volleyball_59_0.png)
 
 </div>
 </div>
 </div>
 
-There it is, the fastest possible serve. Flying only centimetres over the net, and landing right at the edge of the court, this serve leaves the minimal amount of time to react. With this newfound knowledge in my arsenal I am ready to claim my revenge against Filip.
+There it is, the fastest possible serve. Flying only centimeters over the net, and landing right at the edge of the court, this serve leaves the minimal amount of time to react before landing on the floor. It looks like the optimal strategy is to shoot at the lowest possible angle, and with that angle shoot at the lowest possible velocity. When this strategy is taken to the extreme, the ball barely gets above the net, and flies all the way to the back of the court. With this newfound knowledge in my arsenal I am
+ready to claim my revenge against Filip.
+
+The actual efficiency of such a serve is up for discussion, as where the ball lands in relation to the defenders is a big factor in the efficiency of the serve, along with the unpredictability of the serve. However, given the choice, I would definitely prefer not to be on the receiving end of the fastest possible serve.
 
 ## Sources and inspiration
 
