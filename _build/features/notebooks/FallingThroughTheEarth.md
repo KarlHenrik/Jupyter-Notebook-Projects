@@ -6,8 +6,8 @@ kernel_name: python3
 has_widgets: false
 title: 'How long would it take to fall through the Earth?'
 prev_page:
-  url: https://github.com/KarlHenrik/Jupyter-Book-Showroom
-  title: 'GitHub repository'
+  url: https://uio-ccse.github.io/computational-essay-showroom/index.html
+  title: 'CCSE Showroom'
 next_page:
   url: /features/notebooks/FallingThroughTheEarth-Narrative
   title: 'Narrative-version'

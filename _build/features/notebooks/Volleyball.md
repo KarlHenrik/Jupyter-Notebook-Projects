@@ -16,6 +16,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # What is the fastest possible volleyball serve?
 
+**A computational essay by Karl Henrik Fredly, undergraduate at the University of Oslo (karlhf@student.uv.uio.no)**
+
 When I was in high school I really liked playing volleyball. Getting a good serve, spike or block always felt great. Me and my friend Filip used to practice serving after school, hitting the ball back and forth. But his serves were always way better than mine, having much more power and spin. On the court his serves were an absolute pain to return, while mine were just decent. I could never quite figure it out. But maybe I can now? By using my knowledge about physics and computation, can I find out what it takes to make the fastest possible serve? It's worth a shot.
 
 To do the calculations I will use numpy. And to show my results I will use matplotlib.
@@ -235,7 +237,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_31_0.png)
+![png](../../images/features/notebooks/Volleyball_32_0.png)
 
 </div>
 </div>
@@ -286,7 +288,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_38_0.png)
+![png](../../images/features/notebooks/Volleyball_39_0.png)
 
 </div>
 </div>
@@ -322,7 +324,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_40_0.png)
+![png](../../images/features/notebooks/Volleyball_41_0.png)
 
 </div>
 </div>
@@ -369,7 +371,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_45_0.png)
+![png](../../images/features/notebooks/Volleyball_46_0.png)
 
 </div>
 </div>
@@ -405,7 +407,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_47_0.png)
+![png](../../images/features/notebooks/Volleyball_48_0.png)
 
 </div>
 </div>
@@ -482,7 +484,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_54_0.png)
+![png](../../images/features/notebooks/Volleyball_55_0.png)
 
 </div>
 </div>
@@ -554,7 +556,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_59_0.png)
+![png](../../images/features/notebooks/Volleyball_60_0.png)
 
 </div>
 </div>

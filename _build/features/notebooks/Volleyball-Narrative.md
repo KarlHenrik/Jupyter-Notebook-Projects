@@ -9,8 +9,8 @@ prev_page:
   url: /features/notebooks/Volleyball
   title: 'What is the fastest possible volleyball serve?'
 next_page:
-  url: 
-  title: ''
+  url: /features/activities/FallingThroughTheEarth/FallingThroughTheEarth
+  title: 'How long would it take to fall through the Earth?'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
