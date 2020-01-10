@@ -9,8 +9,8 @@ prev_page:
   url: /features/notebooks/FallingIntoSpace
   title: 'How long would it take to fall into space?'
 next_page:
-  url: /features/notebooks/Volleyball-Narrative
-  title: 'Narrative-version'
+  url: /features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution
+  title: 'How long would it take to fall through the Earth?'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

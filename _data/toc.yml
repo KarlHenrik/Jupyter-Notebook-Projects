@@ -28,7 +28,7 @@
 
 # External link
 - title: GitHub repository
-  url: https://github.com/KarlHenrik/Jupyter-Book-Showroom
+  url: https://github.com/KarlHenrik/Jupyter-Notebook-Projects
   external: true
   not_numbered: true
 
@@ -55,9 +55,6 @@
   url: /features/notebooks/FallingThroughTheEarth
   not_numbered: true
   expand_sections: true
-  sections:
-  - title: Narrative-version
-    url: /features/notebooks/FallingThroughTheEarth-Narrative
 
 - title: How long would it take to fall into space?
   url: /features/notebooks/FallingIntoSpace
@@ -68,16 +65,21 @@
   url: /features/notebooks/Volleyball
   not_numbered: true
   expand_sections: true
-  sections:
-  - title: Narrative-version
-    url: /features/notebooks/Volleyball-Narrative
 
-- header: Student Exercises
+- header: Exercise sets
 
 - title: How long would it take to fall through the Earth?
-  url: /features/activities/FallingThroughTheEarth/FallingThroughTheEarth
+  url: /features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution
   not_numbered: true
   expand_sections: true
   sections:
-  - title: Example Solution
-    url: /features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution
+  - title: Template
+    url: /features/activities/FallingThroughTheEarth/FallingThroughTheEarth
+
+- title: Falling in a non-uniform atmosphere
+  url: /features/activities/FallingFasterThanSound/PICUP_Skydiver_Solution
+  not_numbered: true
+  expand_sections: true
+  sections:
+  - title: Template
+    url: /features/activities/FallingFasterThanSound/PICUP_Skydiver

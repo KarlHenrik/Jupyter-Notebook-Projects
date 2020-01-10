@@ -1,3 +1,3 @@
 # Introduction
 
-This Jupyter Book is for my Jupyter Notebook work. Everything is a work in progress. Hi Tor.
+This Jupyter Book contains some of my Jupyter Notebook projects.

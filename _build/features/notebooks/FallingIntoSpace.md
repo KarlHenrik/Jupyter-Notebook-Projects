@@ -6,8 +6,8 @@ kernel_name: python3
 has_widgets: false
 title: 'How long would it take to fall into space?'
 prev_page:
-  url: /features/notebooks/FallingThroughTheEarth-Narrative
-  title: 'Narrative-version'
+  url: /features/notebooks/FallingThroughTheEarth
+  title: 'How long would it take to fall through the Earth?'
 next_page:
   url: /features/notebooks/Volleyball
   title: 'What is the fastest possible volleyball serve?'

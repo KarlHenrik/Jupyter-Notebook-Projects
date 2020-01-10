@@ -9,8 +9,8 @@ prev_page:
   url: https://uio-ccse.github.io/computational-essay-showroom/index.html
   title: 'CCSE Showroom'
 next_page:
-  url: /features/notebooks/FallingThroughTheEarth-Narrative
-  title: 'Narrative-version'
+  url: /features/notebooks/FallingIntoSpace
+  title: 'How long would it take to fall into space?'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
