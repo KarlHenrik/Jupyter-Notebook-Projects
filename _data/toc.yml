@@ -59,3 +59,21 @@
   url: /features/notebooks/Volleyball
   not_numbered: true
   expand_sections: true
+
+- header: Exercise sets
+
+- title: How long would it take to fall through the Earth?
+  url: /features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution
+  not_numbered: true
+  expand_sections: true
+  sections:
+  - title: Template
+    url: /features/activities/FallingThroughTheEarth/FallingThroughTheEarth
+
+- title: Falling in a non-uniform atmosphere
+  url: /features/activities/FallingFasterThanSound/PICUP_Skydiver_Solution
+  not_numbered: true
+  expand_sections: true
+  sections:
+  - title: Template
+    url: /features/activities/FallingFasterThanSound/PICUP_Skydiver
