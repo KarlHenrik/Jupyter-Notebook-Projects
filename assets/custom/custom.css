@@ -14,6 +14,6 @@ aside.sidebar__right {
     max-width: 900px;
 }
 
-nav {
-    scrollbar-width: auto;
+#js-textbook {
+    margin-left: 10%;
 }
