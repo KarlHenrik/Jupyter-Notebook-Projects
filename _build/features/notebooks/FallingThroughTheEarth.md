@@ -9,8 +9,8 @@ prev_page:
   url: https://github.com/jupyter/jupyter-book
   title: 'GitHub repository'
 next_page:
-  url: /features/notebooks/FallingIntoSpace
-  title: 'How long would it take to fall into space?'
+  url: 
+  title: ''
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
