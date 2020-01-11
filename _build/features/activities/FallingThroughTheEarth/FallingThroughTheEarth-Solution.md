@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - "/features/activities/fallingthroughtheearth/fallingthroughtheearth-solution"
-interact_link: content/features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution.ipynb
+interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\Jupyter-Notebook-Projects\content\features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution.ipynb
 kernel_name: python3
 has_widgets: false
 title: 'How long would it take to fall through the Earth?'
@@ -220,7 +220,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution_29_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution_29_0.png)
 
 </div>
 </div>
@@ -332,7 +332,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution_43_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution_43_0.png)
 
 </div>
 </div>
@@ -387,7 +387,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution_51_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution_51_0.png)
 
 </div>
 </div>
@@ -471,7 +471,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution_57_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution_57_0.png)
 
 </div>
 </div>
@@ -578,7 +578,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution_68_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution_68_0.png)
 
 </div>
 </div>
