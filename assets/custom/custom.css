@@ -5,15 +5,11 @@
 }
 .c-textbook {
     max-width: 1550px;
-    margin-left: 5%;
+    margin-left: 10%;
 }
 aside.sidebar__right {
     transform: translateX(550px);
 }
 .o-wrapper {
     max-width: 900px;
-}
-
-#js-textbook {
-    margin-left: 10%;
 }
