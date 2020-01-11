@@ -9,8 +9,8 @@ prev_page:
   url: /features/activities/FallingThroughTheEarth/FallingThroughTheEarth
   title: 'Template'
 next_page:
-  url: /features/activities/FallingFasterThanSound/PICUP-Skydiver
-  title: 'Template'
+  url: 
+  title: ''
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
