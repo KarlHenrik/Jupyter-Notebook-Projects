@@ -43,14 +43,37 @@
 - header: Demo textbook
 
 # A chapter w/ a collection of sections beneath it
-- title: Features and customization
-  url: /features/features
+- header: Computational Essays
+
+- title: How long would it take to fall through the Earth?
+  url: /features/notebooks/FallingThroughTheEarth
+  not_numbered: true
+  expand_sections: true
+
+- title: How long would it take to fall into space?
+  url: /features/notebooks/FallingIntoSpace
+  not_numbered: true
+  expand_sections: true
+
+- title: What is the fastest possible volleyball serve?
+  url: /features/notebooks/Volleyball
+  not_numbered: true
+  expand_sections: true
+
+- header: Exercise sets
+
+- title: How long would it take to fall through the Earth?
+  url: /features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution
   not_numbered: true
   expand_sections: true
   sections:
-  - title: Markdown files
-    url: /features/markdown
-    not_numbered: true
-  - title: Jupyter notebooks
-    url: /features/notebooks
-    not_numbered: true
+  - title: Template
+    url: /features/activities/FallingThroughTheEarth/FallingThroughTheEarth
+
+- title: Falling in a non-uniform atmosphere
+  url: /features/activities/FallingFasterThanSound/PICUP_Skydiver_Solution
+  not_numbered: true
+  expand_sections: true
+  sections:
+  - title: Template
+    url: /features/activities/FallingFasterThanSound/PICUP_Skydiver
