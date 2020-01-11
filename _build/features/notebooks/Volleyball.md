@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - "/features/notebooks/volleyball"
-interact_link: content/features/notebooks/Volleyball.ipynb
+interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\Jupyter-Notebook-Projects\content\features/notebooks/Volleyball.ipynb
 kernel_name: python3
 has_widgets: false
 title: 'What is the fastest possible volleyball serve?'
@@ -237,7 +237,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_32_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/notebooks/Volleyball_32_0.png)
 
 </div>
 </div>
@@ -288,7 +288,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_39_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/notebooks/Volleyball_39_0.png)
 
 </div>
 </div>
@@ -324,7 +324,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_41_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/notebooks/Volleyball_41_0.png)
 
 </div>
 </div>
@@ -371,7 +371,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_46_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/notebooks/Volleyball_46_0.png)
 
 </div>
 </div>
@@ -407,7 +407,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_48_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/notebooks/Volleyball_48_0.png)
 
 </div>
 </div>
@@ -484,7 +484,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_55_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/notebooks/Volleyball_55_0.png)
 
 </div>
 </div>
@@ -556,7 +556,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](../../images/features/notebooks/Volleyball_60_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/notebooks/Volleyball_60_0.png)
 
 </div>
 </div>

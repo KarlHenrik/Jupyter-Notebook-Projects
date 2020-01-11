@@ -32,12 +32,6 @@
   external: true
   not_numbered: true
 
-- title: CCSE Showroom
-  url: https://uio-ccse.github.io/computational-essay-showroom/index.html
-  external: true
-  not_numbered: true
-
-
 # Adds a searchbar link
 - title: Search
   search: true
@@ -46,9 +40,6 @@
 - divider: true
 
 # Add a header and sample content section
-#- header: Computational Narratives
-
-# A chapter w/ a collection of sections beneath it
 - header: Computational Essays
 
 - title: How long would it take to fall through the Earth?
