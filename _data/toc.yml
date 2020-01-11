@@ -22,15 +22,21 @@
 # See the links below for an example.
 
 # Top-level page
-- title: Home
+- title: Introduction
   url: /intro
   not_numbered: true
 
 # External link
 - title: GitHub repository
-  url: https://github.com/jupyter/jupyter-book
+  url: https://github.com/KarlHenrik/Jupyter-Notebook-Projects
   external: true
   not_numbered: true
+
+- title: CCSE Showroom
+  url: https://uio-ccse.github.io/computational-essay-showroom/index.html
+  external: true
+  not_numbered: true
+
 
 # Adds a searchbar link
 - title: Search
@@ -40,7 +46,7 @@
 - divider: true
 
 # Add a header and sample content section
-- header: Demo textbook
+#- header: Computational Narratives
 
 # A chapter w/ a collection of sections beneath it
 - header: Computational Essays
@@ -71,6 +77,9 @@
     url: /features/activities/FallingThroughTheEarth/FallingThroughTheEarth
 
 - title: Falling in a non-uniform atmosphere
-  url: /features/activities/FallingFasterThanSound/PICUP-Skydiver-Solution
+  url: /features/activities/FallingFasterThanSound/PICUP_Skydiver_Solution
   not_numbered: true
   expand_sections: true
+  sections:
+  - title: Template
+    url: /features/activities/FallingFasterThanSound/PICUP_Skydiver

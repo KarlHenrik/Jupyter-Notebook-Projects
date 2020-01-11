@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - "/features/activities/fallingfasterthansound/picup-skydiver-solution"
-interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\Jupyter-Notebook-Projects\content\features/activities/FallingFasterThanSound/PICUP-Skydiver-Solution.ipynb
+interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\Jupyter-Notebook-Projects\content\features/activities/FallingFasterThanSound/PICUP_Skydiver_Solution.ipynb
 kernel_name: python3
 has_widgets: false
 title: 'Falling in a non-uniform atmosphere'
@@ -9,8 +9,8 @@ prev_page:
   url: /features/activities/FallingThroughTheEarth/FallingThroughTheEarth
   title: 'Template'
 next_page:
-  url: 
-  title: ''
+  url: /features/activities/FallingFasterThanSound/PICUP_Skydiver
+  title: 'Template'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -186,7 +186,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingFasterThanSound/PICUP-Skydiver-Solution_21_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingFasterThanSound/PICUP_Skydiver_Solution_21_0.png)
 
 </div>
 </div>
@@ -344,7 +344,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingFasterThanSound/PICUP-Skydiver-Solution_36_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingFasterThanSound/PICUP_Skydiver_Solution_36_0.png)
 
 </div>
 </div>
@@ -395,7 +395,7 @@ We know that it's possible to break the sound barrier by falling from high enoug
 
 Your next task is to find the lowest input height h necessary to give you a top speed of 343m/s. To solve this kind of problem, you can use the **bisection method**. The bisection method is a search algorithm that finds when a given function returns a desired value, within a certain tolerance. It is significantly more computationally efficient than a brute force method (i.e., testing every value until you find the one you want). 
 
-To implement the bisection method, you start by defining your search space. That is, you start by defining the upper and lower bounds of the range of values you will be searching over—call them the **ceiling** and the **floor**. In practice, it's helpful to choose values that are much higher and lower than your expected values, since some extra padding either way will not significantly affect the speed of the search.
+To implement the bisection method, you start by defining your search space. That is, you start by defining the upper and lower bounds of the range of values you will be searching over - call them the **ceiling** and the **floor**. In practice, it's helpful to choose values that are much higher and lower than your expected values, since some extra padding either way will not significantly affect the speed of the search.
 
 With these boundaries specified, the algorithm proceeds as follows: first, you evaluate your function using a value halfway between the **floor** and **ceiling** (call this the **middle**). If your function returns results that are too low, you know that the actual value will be above the middle, so you set the **floor's** value equal to the **middle** (raise the floor). If the returned value is too high, you know the actual value you are looking for will be below the middle, and you set the **ceiling** equal to the **middle** (lower the ceiling). You then repeat this this process with the new **floor** and **ceiling**, until the values of the **floor** and **ceiling** are very close together. Then, depending on what you are after, the final value of the floor or ceiling will be your final awnser.
 
@@ -543,7 +543,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingFasterThanSound/PICUP-Skydiver-Solution_55_0.png)
+![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingFasterThanSound/PICUP_Skydiver_Solution_55_0.png)
 
 </div>
 </div>

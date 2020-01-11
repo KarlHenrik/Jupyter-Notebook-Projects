@@ -1,10 +1,10 @@
 ---
-title: 'Home'
+title: 'Introduction'
 prev_page:
   url: 
   title: ''
 next_page:
-  url: https://github.com/jupyter/jupyter-book
+  url: https://github.com/KarlHenrik/Jupyter-Notebook-Projects
   title: 'GitHub repository'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---

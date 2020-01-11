@@ -9,7 +9,7 @@ prev_page:
   url: /features/activities/FallingThroughTheEarth/FallingThroughTheEarth-Solution
   title: 'How long would it take to fall through the Earth?'
 next_page:
-  url: /features/activities/FallingFasterThanSound/PICUP-Skydiver-Solution
+  url: /features/activities/FallingFasterThanSound/PICUP_Skydiver_Solution
   title: 'Falling in a non-uniform atmosphere'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
