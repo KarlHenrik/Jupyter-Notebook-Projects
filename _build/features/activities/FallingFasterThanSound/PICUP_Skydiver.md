@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - "/features/activities/fallingfasterthansound/picup-skydiver"
-interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\Jupyter-Notebook-Projects\content\features/activities/FallingFasterThanSound/PICUP_Skydiver.ipynb
+interact_link: content/features/activities/FallingFasterThanSound/PICUP_Skydiver.ipynb
 kernel_name: python3
 has_widgets: false
 title: 'Template'
@@ -147,7 +147,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingFasterThanSound/PICUP_Skydiver_19_0.png)
+![png](../../images/features/activities/FallingFasterThanSound/PICUP_Skydiver_19_0.png)
 
 </div>
 </div>
@@ -249,7 +249,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingFasterThanSound/PICUP_Skydiver_31_0.png)
+![png](../../images/features/activities/FallingFasterThanSound/PICUP_Skydiver_31_0.png)
 
 </div>
 </div>

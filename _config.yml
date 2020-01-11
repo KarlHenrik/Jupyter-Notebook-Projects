@@ -16,11 +16,11 @@
 
 #######################################################################################
 # Jekyll site settings
-title: YOUR BOOK NAME
-author: YOUR AUTHOR NAME
-email: YOUR EMAIL
+title: Jupyter Notebook Projects
+author: Karl Henrik Fredly
+email: karlhf@student.uv.uio.no
 description: >-
-  This is an example book built with Jupyter Books.
+  This Jupyter Book is a showcase and a testing ground for the things I'm working on
 
 baseurl: /               # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
 url: YOUR URL              # the base hostname & protocol for your site, e.g. http://example.com
@@ -35,10 +35,9 @@ use_hide_code_button: true        # If True, a small button appears to the right
 # Sidebar settings
 show_sidebar: true                # Show the sidebar. Only set to false if your only wish to host a single page.
 collapse_inactive_chapters: true  # Whether to collapse the inactive chapters in the sidebar
-textbook_logo: images/logo/logo.png               # A logo to be displayed at the top of your textbook sidebar
-textbook_logo_link: https://jupyter.org/jupyter-book/                    # A link for the logo.
-sidebar_footer_text: Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter
-  Book</a>
+textbook_logo: assets/images/logo_lightbulb.svg               # A logo to be displayed at the top of your textbook sidebar
+textbook_logo_link: https://karlhenrik.github.io/Jupyter-Notebook-Projects/intro       # A link for the logo.
+sidebar_footer_text: Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a>
 number_toc_chapters: true         # Whether to add numbers to chapterse in your Table of Contents. If true, you can control this at the Chapter level in _data/toc.yml
 
 # Search settings

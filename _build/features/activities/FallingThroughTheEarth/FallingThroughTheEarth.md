@@ -1,7 +1,7 @@
 ---
 redirect_from:
   - "/features/activities/fallingthroughtheearth/fallingthroughtheearth"
-interact_link: content/C:\Users\KarlH\Dropbox\GitHubRepositories\Jupyter-Notebook-Projects\content\features/activities/FallingThroughTheEarth/FallingThroughTheEarth.ipynb
+interact_link: content/features/activities/FallingThroughTheEarth/FallingThroughTheEarth.ipynb
 kernel_name: python3
 has_widgets: false
 title: 'Template'
@@ -176,7 +176,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth_26_0.png)
+![png](../../images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth_26_0.png)
 
 </div>
 </div>
@@ -250,7 +250,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth_37_0.png)
+![png](../../images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth_37_0.png)
 
 </div>
 </div>
@@ -305,7 +305,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth_45_0.png)
+![png](../../images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth_45_0.png)
 
 </div>
 </div>
@@ -389,7 +389,7 @@ plt.show()
 <div class="output_subarea" markdown="1">
 
 {:.output_png}
-![png](C%3A/Users/KarlH/Dropbox/GitHubRepositories/Jupyter-Notebook-Projects/_build/images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth_51_0.png)
+![png](../../images/features/activities/FallingThroughTheEarth/FallingThroughTheEarth_51_0.png)
 
 </div>
 </div>
